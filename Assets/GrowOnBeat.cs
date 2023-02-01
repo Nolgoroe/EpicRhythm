@@ -13,13 +13,12 @@ public class GrowOnBeat : MonoBehaviour
     [Range(0.8f, 0.99f)]
     public float shrinkFactor;
 
+    [Header("Beat settings")]
     [Range(0, 3)]
     public int OnFullBeat;
     private int beatCountFull;
-
     [Range(0, 7)]
     public int[] onBeatD8;
-
     public bool isEveryBeat;
     void Start()
     {
@@ -31,9 +30,17 @@ public class GrowOnBeat : MonoBehaviour
         currentSize = shrinkSize;
     }
 
+    bool activate = false;
     void Update()
     {
-        if(currentSize > shrinkSize)
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            activate = true;
+        }
+
+        if (!activate) return;
+
+        if (currentSize > shrinkSize)
         {
             currentSize *= shrinkFactor;
         }

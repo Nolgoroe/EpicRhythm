@@ -1,22 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
-public class ColorOnBeat : MonoBehaviour
+public class UpdateValuesOnBeat : MonoBehaviour
 {
-    public Transform target;
-    private MeshRenderer meshRenderer;
-    public Material material;
-    private Material materialInstance;
-    public Color materialColor;
-    public string colorProperties;
+    public Volume processVolume;
+    public LensDistortion distortion;
 
-    private float colorStrength;
+    private float currentDistortion;
+    public float growDistortion;
+    public float shrinkDistortion;
 
     [Range(0.8f, 0.99f)]
-    public float fallBackFactor;
+    public float distortionFactor;
 
-    public float colorMultiplier;
 
     [Header("Beat settings")]
     [Range(0, 3)]
@@ -29,19 +28,13 @@ public class ColorOnBeat : MonoBehaviour
     bool activate = false;
     void Start()
     {
-        if (target != null)
+        if(processVolume == null)
         {
-            meshRenderer = target.GetComponent<MeshRenderer>();
-        }
-        else
-        {
-            meshRenderer = GetComponent<MeshRenderer>();
+            processVolume = GetComponent<Volume>();
         }
 
-        colorStrength = 0;
-        materialInstance = new Material(material);
-        materialInstance.EnableKeyword("_EMISSION");
-        meshRenderer.material = materialInstance;
+        processVolume.profile.TryGet<LensDistortion>(out distortion);
+
     }
 
     void Update()
@@ -52,28 +45,32 @@ public class ColorOnBeat : MonoBehaviour
         }
 
         if (!activate) return;
-        if(colorStrength > 0)
+
+        if (currentDistortion > shrinkDistortion)
         {
-            colorStrength *= fallBackFactor;
+            currentDistortion *= distortionFactor;
         }
         else
         {
-            colorStrength = 0;
+            currentDistortion = shrinkDistortion;
         }
 
-        CheckBeat();
-
-        materialInstance.SetColor(colorProperties, materialColor * colorStrength * colorMultiplier);
 
         if (Input.GetKeyDown(KeyCode.X))
         {
             isEveryBeat = true;
         }
+
+
+        CheckBeat();
+
+
+        distortion.intensity.value = currentDistortion;
     }
 
-    void Colorize()
+    void Distort()
     {
-        colorStrength = 1;
+        currentDistortion = growDistortion;
     }
 
     void CheckBeat()
@@ -82,7 +79,7 @@ public class ColorOnBeat : MonoBehaviour
         {
             if (BPM.beatFull)
             {
-                Colorize();
+                Distort();
             }
 
             return;
@@ -94,7 +91,7 @@ public class ColorOnBeat : MonoBehaviour
         {
             if (BPM.beatFullD8 && beatCountFull == OnFullBeat && BPM.beatCountFullD8 % 8 == onBeatD8[i])
             {
-                Colorize();
+                Distort();
             }
         }
 
