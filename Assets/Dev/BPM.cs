@@ -11,7 +11,7 @@ public class BPM : MonoBehaviour
     [Header("Normal beats")]
     public static bool beatFull;
     public static int beatCountFull;
-    private float beatInterval;
+    public float beatInterval;
     private float beatTimer;
 
     [Header("D8 beats")] // used to devide every normal beat to 8
@@ -19,6 +19,12 @@ public class BPM : MonoBehaviour
     public static int beatCountFullD8;
     private float beatTimerD8;
     private float beatIntervalD8;
+
+    [Header("actions")]
+    public static bool beatFullAction;
+    [SerializeField][Range(0,1)] float actionRangeBefore;
+    [SerializeField] [Range(0, 1)] float actionRangeAfter;
+    public float beatActionTimer;
 
     private void Awake()
     {
@@ -38,11 +44,17 @@ public class BPM : MonoBehaviour
         BeatDetection();
     }
 
+    public void ResetBeatActionTimer()
+    {
+        beatActionTimer = 0;
+        beatFullAction = false;
+    }
     void BeatDetection()
     {
         beatFull = false;
         beatInterval = 60 / musicBPM; // this is the interval of beats, if song has 60 bpm, then 60/60 is 1 -> every second there will be a beat
         beatTimer += Time.deltaTime;
+        beatActionTimer += Time.deltaTime;
 
         if(beatTimer >= beatInterval)
         {
@@ -62,5 +74,16 @@ public class BPM : MonoBehaviour
             beatFullD8 = true;
             beatCountFullD8++;
         }
+
+        if (beatActionTimer > beatInterval + actionRangeAfter)
+        {
+            ResetBeatActionTimer();
+            return;
+        }
+        if (beatActionTimer >= beatInterval - actionRangeBefore && beatActionTimer < beatInterval + actionRangeAfter)
+        {
+            beatFullAction = true;
+        }
+
     }
 }

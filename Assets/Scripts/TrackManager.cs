@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class TrackManager : MonoBehaviour
 {
-    public GameObject[] Tiles;
+    public MeshRenderer[] Tiles;
 
     private bool gridSwitch;
     void Start()
     {
-        
+        GridSwitch();
     }
 
     void Update()
@@ -20,7 +20,12 @@ public class TrackManager : MonoBehaviour
     {
         if (BPM.beatFull)
         {
-            LineControl();
+            if (BPM.beatCountFull <= 6)
+            {
+                GridSwitch();
+            }
+            else
+                LineControl();
         }
     }
     void GridSwitch()
@@ -31,11 +36,11 @@ public class TrackManager : MonoBehaviour
             {
                 if (i % 2 == 0)
                 {
-                    Tiles[i].SetActive(false);
+                    Tiles[i].enabled = false;
                 }
                 if (i % 2 == 1)
                 {
-                    Tiles[i].SetActive(true);
+                    Tiles[i].enabled = true;
                 }
             }
             gridSwitch = !gridSwitch;
@@ -46,16 +51,17 @@ public class TrackManager : MonoBehaviour
             {
                 if (i % 2 == 0)
                 {
-                    Tiles[i].SetActive(true);
+                    Tiles[i].enabled = true;
                 }
                 if (i % 2 == 1)
                 {
-                    Tiles[i].SetActive(false);
+                    Tiles[i].enabled = false;
                 }
             }
             gridSwitch = !gridSwitch;
         }
     }
+    
     void LineControl()
     {
         for (int i = 0; i < Tiles.Length; i++)
@@ -68,19 +74,19 @@ public class TrackManager : MonoBehaviour
                     rand = false;
                 else
                     rand = true;
-                Tiles[i].SetActive(rand);
+                Tiles[i].enabled = rand;
             }
             else if (i % 3 == 0)
             {
-                Tiles[i].SetActive(Tiles[i + 3].activeSelf);
+                Tiles[i].enabled = Tiles[i + 3].enabled;
             }
             else if (i % 3 == 1)
             {
-                Tiles[i].SetActive(Tiles[i + 3].activeSelf);
+                Tiles[i].enabled = Tiles[i + 3].enabled;
             }
             else if (i % 3 == 2)
             {
-                Tiles[i].SetActive(Tiles[i + 3].activeSelf);
+                Tiles[i].enabled = Tiles[i + 3].enabled;
             }
         }
     }
