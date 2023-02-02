@@ -60,7 +60,7 @@ public class TrackManager : MonoBehaviour
     {
         for (int i = 0; i < Tiles.Length; i++)
         {
-            if (i + 1 == Tiles.Length)
+            if (i == 27 || i == 28 || i == 29)
             {
                 bool rand;
                 int randomNum = Random.Range(0, 2);
@@ -70,11 +70,15 @@ public class TrackManager : MonoBehaviour
                     rand = true;
                 Tiles[i].SetActive(rand);
             }
-            else if (i == 27)
-            {
-                Tiles[i].SetActive(Tiles[29].activeSelf);
-            }
             else if (i % 3 == 0)
+            {
+                Tiles[i].SetActive(Tiles[i + 3].activeSelf);
+            }
+            else if (i % 3 == 1)
+            {
+                Tiles[i].SetActive(Tiles[i + 3].activeSelf);
+            }
+            else if (i % 3 == 2)
             {
                 Tiles[i].SetActive(Tiles[i + 3].activeSelf);
             }
