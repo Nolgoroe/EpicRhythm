@@ -19,10 +19,11 @@ public class TileGlowOnLand : MonoBehaviour
     {
         if (BPM.beatFull)
         {
-            if (PlayerController.land)
-            {
-                Debug.Log("Slam!");
-            }
+            
         }
+    }
+    public static void Slam()
+    {
+        Debug.Log("Slam!");
     }
 }

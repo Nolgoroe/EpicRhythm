@@ -95,8 +95,6 @@ public class PlayerController : MonoBehaviour
             HandleMovement(inAir);
             skipBeat = true;
             inAir = false;
-
-
         }
 
         if (isCrouched)
@@ -296,12 +294,12 @@ public class PlayerController : MonoBehaviour
     void DoActionsAfterBeatSkip()
     {
         BPM.BPMinstance.ResetBeatActionTimer();
-
+        TileGlowOnLand.Slam();
         StandUp();
 
         if (transform.position.y > 0.3f)
         {
-            land = true;
+            
             LeanTween.moveY(gameObject, 0.25f, timeInterval).setEase(leanType);
             rippleEffect.Ripple();
         }
