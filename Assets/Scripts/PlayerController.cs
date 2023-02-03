@@ -73,6 +73,12 @@ public class PlayerController : MonoBehaviour
 
         if (BPM.beatFull)
         {
+            if (!bumped)
+            {
+                colorOnBeat.materialColor = baseColor;
+                colorOnBeat.Colorize();
+            }
+
             OnBeatOccurrence();
         }
 
@@ -83,8 +89,8 @@ public class PlayerController : MonoBehaviour
         //keyPressed = false;
         //inputFailed = false;
         bumped = false;
-        matColor = baseColor;
-        colorOnBeat.materialColor = matColor;
+        //matColor = baseColor;
+        //colorOnBeat.materialColor = matColor;
         if (inAir)
         {
             HandleMovement(inAir);
@@ -292,10 +298,9 @@ public class PlayerController : MonoBehaviour
 
         StandUp();
 
-        if (transform.position.y > 0.25f)
+        if (transform.position.y > 0.3f)
         {
             LeanTween.moveY(gameObject, 0.25f, timeInterval).setEase(leanType);
-            colorOnBeat.Colorize();
             rippleEffect.Ripple();
         }
     }

@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class ColorOnBeat : MonoBehaviour
 {
-    public Transform target;
-    private MeshRenderer meshRenderer;
-    public Material material;
-    private Material materialInstance;
+    public Transform bodyTarget;
+    public Transform hairTarget;
+    public Transform leftHornTarget;
+    public Transform rightHornTarget;
+    private SkinnedMeshRenderer bodyMeshRenderer;
+    private SkinnedMeshRenderer hairMeshRenderer;
+    private SkinnedMeshRenderer hornLeftMeshRenderer;
+    private SkinnedMeshRenderer hornRightMeshRenderer;
+    //public Material material;
+    //private Material materialInstance;
     public Color materialColor;
     public string colorProperties;
 
@@ -26,37 +32,67 @@ public class ColorOnBeat : MonoBehaviour
     public int[] onBeatD8;
     public bool isEveryBeat;
 
+    Material bodyMat;
+    Material HairMat;
+    Material hornLeftMat;
+    Material hornRighttMat;
     void Start()
     {
-        if (target != null)
+        if (bodyTarget != null)
         {
-            meshRenderer = target.GetComponent<MeshRenderer>();
+            bodyMeshRenderer = bodyTarget.GetComponent<SkinnedMeshRenderer>();
         }
-        else
+
+        if (hairTarget != null)
         {
-            meshRenderer = GetComponent<MeshRenderer>();
+            hairMeshRenderer = hairTarget.GetComponent<SkinnedMeshRenderer>();
+        }
+
+        if (leftHornTarget != null)
+        {
+            hornLeftMeshRenderer = leftHornTarget.GetComponent<SkinnedMeshRenderer>();
+        }
+
+        if (rightHornTarget != null)
+        {
+            hornRightMeshRenderer = rightHornTarget.GetComponent<SkinnedMeshRenderer>();
         }
 
         colorStrength = 0;
-        materialInstance = new Material(material);
-        materialInstance.EnableKeyword("_EMISSION");
-        meshRenderer.material = materialInstance;
+        bodyMat = bodyMeshRenderer.materials[0];
+        bodyMat.EnableKeyword("_Emmision");
+
+        HairMat = hairMeshRenderer.materials[0];
+        HairMat.EnableKeyword("_Emmision");
+
+        hornLeftMat = hornLeftMeshRenderer.materials[0];
+        hornLeftMat.EnableKeyword("_Emmision");
+
+        hornRighttMat = hornRightMeshRenderer.materials[0];
+        hornRighttMat.EnableKeyword("_Emmision");
+        //materialInstance = new Material(material);
+        //materialInstance.EnableKeyword("_Emmision");
+        //meshRenderer.material = materialInstance;
     }
 
     void Update()
     {
-        if(colorStrength > 0)
+        if(colorStrength > 1)
         {
             colorStrength *= fallBackFactor;
         }
         else
         {
-            colorStrength = 0;
+            colorStrength = 1;
         }
 
         CheckBeat();
 
-        materialInstance.SetColor(colorProperties, materialColor * colorStrength * colorMultiplier);
+        //materialInstance.SetColor(colorProperties, materialColor * colorStrength * colorMultiplier);
+        bodyMat.SetColor(colorProperties, materialColor * colorStrength);
+        HairMat.SetColor(colorProperties, materialColor * colorStrength);
+        hornLeftMat.SetColor(colorProperties, materialColor * colorStrength);
+        hornRighttMat.SetColor(colorProperties, materialColor * colorStrength);
 
         if (Input.GetKeyDown(KeyCode.X))
         {
@@ -66,7 +102,7 @@ public class ColorOnBeat : MonoBehaviour
 
     public void Colorize()
     {
-        colorStrength = 1;
+        colorStrength = 1 * colorMultiplier;
     }
 
     void CheckBeat()
