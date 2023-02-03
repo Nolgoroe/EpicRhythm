@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
             mat.color = Color.blue;
             if (inAir)
             {
-                HandleMovement();
+                HandleMovement(inAir);
                 skipBeat = true;
                 inAir = false;
             }
@@ -157,6 +157,32 @@ public class PlayerController : MonoBehaviour
 
         currentAction = ActionType.None;
     }
+    void HandleMovement(bool inAir)
+    {
+        if (currentAction == ActionType.None) return;
+
+        if (inAir)
+        {
+            switch (currentAction)
+            {
+                case ActionType.MoveLeft:
+                    if (transform.position.x - 2 < limitXleft) return;
+                    MoveLeft();
+                    break;
+                case ActionType.MoveRight:
+                    if (transform.position.x + 2 > limitXRight) return;
+                    MoveRight();
+                    break;
+                case ActionType.Jump:
+                    if (transform.position.y + 2 > limitYUp) return;
+                    Jump();
+                    break;
+                default:
+                    break;
+            }
+        }
+        currentAction = ActionType.None;
+    }
 
     void MoveLeft()
     {
@@ -196,7 +222,7 @@ public class PlayerController : MonoBehaviour
 
         if (transform.position.y > 0.25f)
         {
-            LeanTween.moveY(gameObject, 0, timeInterval).setEase(LeanTweenType.easeOutElastic);
+            LeanTween.moveY(gameObject, 0.25f, timeInterval).setEase(LeanTweenType.easeOutElastic);
             colorOnBeat.Colorize();
         }
     }

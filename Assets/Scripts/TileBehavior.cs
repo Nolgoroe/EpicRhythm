@@ -19,6 +19,6 @@ public class TileBehavior : MonoBehaviour
    
     void ActionPerBeatUpdate()
     {
-        LeanTween.moveLocal(gameObject, new Vector3(transform.position.x, transform.position.y, transform.position.z + 0.5f), BPM.BPMinstance.beatInterval).setEase(LeanTweenType.punch);
+        LeanTween.move(gameObject, new Vector3(transform.position.x, transform.position.y, transform.position.z + 0.5f), BPM.BPMinstance.beatInterval).setEase(LeanTweenType.punch);
     }
 }

@@ -26,8 +26,8 @@ public class ObstacleTrackManager : MonoBehaviour
             if (i == 27 || i == 28 || i == 29)
             {
                 bool rand;
-                int randomNum = Random.Range(0, 2);
-                if (randomNum == 0)
+                int randomNum = Random.Range(0, 101);
+                if (randomNum < 90)
                     rand = false;
                 else
                     rand = true;
