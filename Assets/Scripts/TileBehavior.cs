@@ -6,9 +6,7 @@ public class TileBehavior : MonoBehaviour
 {
 
 
-    private void OnEnable()
-    {
-    }
+   
     void Update()
     {
         if (BPM.beatFull)

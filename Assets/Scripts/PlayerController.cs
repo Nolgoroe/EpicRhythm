@@ -12,14 +12,12 @@ public enum ActionType
 }
 public class PlayerController : MonoBehaviour
 {
+    //position
     public static bool inAir;
-    //public static bool inputFailed;
+    public static bool land;
+    public static int currentPos = 1;
 
     public ActionType currentAction = ActionType.None;
-
-    [SerializeField] KeyCode moveLeft;
-    [SerializeField] KeyCode moveRight;
-    [SerializeField] KeyCode jump;
 
     //private bool keyPressed;
 
@@ -34,6 +32,7 @@ public class PlayerController : MonoBehaviour
 
     int XPos = 0;
     int YPos = 0;
+    
 
     public ColorOnBeat colorOnBeat;
     public RipplePostProcessor rippleEffect;
@@ -96,6 +95,8 @@ public class PlayerController : MonoBehaviour
             HandleMovement(inAir);
             skipBeat = true;
             inAir = false;
+
+
         }
 
         if (isCrouched)
@@ -112,7 +113,7 @@ public class PlayerController : MonoBehaviour
             DoActionsAfterBeatSkip();
             return;
         }
-
+        land = false;
         HandleMovement();
     }
 
@@ -266,7 +267,7 @@ public class PlayerController : MonoBehaviour
     {
         XPos -= 2;
         if (XPos < -2) XPos = -2;
-
+        currentPos -= 1;
         BPM.BPMinstance.ResetBeatActionTimer();
         //keyPressed = true;
         LeanTween.moveX(gameObject, XPos, timeInterval).setEase(leanType);
@@ -275,7 +276,7 @@ public class PlayerController : MonoBehaviour
     void MoveRight()
     {
         XPos += 2;
-
+        currentPos += 1;
         if (XPos > 2) XPos = 2;
         //keyPressed = true;
         BPM.BPMinstance.ResetBeatActionTimer();
@@ -300,6 +301,7 @@ public class PlayerController : MonoBehaviour
 
         if (transform.position.y > 0.3f)
         {
+            land = true;
             LeanTween.moveY(gameObject, 0.25f, timeInterval).setEase(leanType);
             rippleEffect.Ripple();
         }
