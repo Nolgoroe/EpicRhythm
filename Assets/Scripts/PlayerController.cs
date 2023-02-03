@@ -47,6 +47,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] int hp;
     private int currentHp;
     private bool bumped;
+
+    LeanTweenType leanType = LeanTweenType.easeOutElastic;
     private void Start()
     {
         currentAction = ActionType.None;
@@ -261,7 +263,7 @@ public class PlayerController : MonoBehaviour
 
         BPM.BPMinstance.ResetBeatActionTimer();
         //keyPressed = true;
-        LeanTween.moveX(gameObject, XPos, timeInterval).setEase(LeanTweenType.easeOutElastic);
+        LeanTween.moveX(gameObject, XPos, timeInterval).setEase(leanType);
     }
 
     void MoveRight()
@@ -271,7 +273,7 @@ public class PlayerController : MonoBehaviour
         if (XPos > 2) XPos = 2;
         //keyPressed = true;
         BPM.BPMinstance.ResetBeatActionTimer();
-        LeanTween.moveX(gameObject, XPos, timeInterval).setEase(LeanTweenType.easeOutElastic);
+        LeanTween.moveX(gameObject, XPos, timeInterval).setEase(leanType);
     }
     void Jump()
     {
@@ -281,7 +283,7 @@ public class PlayerController : MonoBehaviour
         //keyPressed = true;
         inAir = true;
         BPM.BPMinstance.ResetBeatActionTimer();
-        LeanTween.moveY(gameObject, YPos, timeInterval).setEase(LeanTweenType.easeOutElastic);
+        LeanTween.moveY(gameObject, YPos, timeInterval).setEase(leanType);
     }
 
     void DoActionsAfterBeatSkip()
@@ -292,7 +294,7 @@ public class PlayerController : MonoBehaviour
 
         if (transform.position.y > 0.25f)
         {
-            LeanTween.moveY(gameObject, 0.25f, timeInterval).setEase(LeanTweenType.easeOutElastic);
+            LeanTween.moveY(gameObject, 0.25f, timeInterval).setEase(leanType);
             colorOnBeat.Colorize();
             rippleEffect.Ripple();
         }
@@ -300,13 +302,13 @@ public class PlayerController : MonoBehaviour
     void Crouch()
     {
         isCrouched = true;
-        LeanTween.scaleY(gameObject, 1, timeInterval).setEase(LeanTweenType.easeOutElastic);
+        LeanTween.scaleY(gameObject, 1, timeInterval).setEase(leanType);
     }
     void StandUp()
     {
         if (transform.localScale.y < 2)
         {
-            LeanTween.scaleY(gameObject, 2, timeInterval).setEase(LeanTweenType.easeOutElastic);
+            LeanTween.scaleY(gameObject, 2, timeInterval).setEase(leanType);
         }
     }
 

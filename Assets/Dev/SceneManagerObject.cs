@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class SceneManagerObject : MonoBehaviour
 {
-    public static GameManager instance;
+    public static SceneManagerObject instance;
     void Start()
     {
         if (instance != null && instance != this)
@@ -15,16 +15,17 @@ public class GameManager : MonoBehaviour
         else
         {
             instance = this;
+            DontDestroyOnLoad(this);
+        }
+    }
+    public void LoadSpecificScene(int index)
+    {
+        SceneManager.LoadScene(index);
+
+        if (BPM.BPMinstance != null)
+        {
+            Destroy(BPM.BPMinstance.gameObject);
         }
     }
 
-    public void StartGame()
-    {
-        SceneManagerObject.instance.LoadSpecificScene(1);
-    }
-
-    public void OnDie()
-    {
-        SceneManagerObject.instance.LoadSpecificScene(0);
-    }
 }
