@@ -46,7 +46,19 @@ PrefabInstance:
     m_TransformParent: {fileID: 3979038979400810454}
     m_Modifications:
     - target: {fileID: 125046772422175004, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
+      propertyPath: growSize
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 125046772422175004, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 125046772422175004, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
       propertyPath: OnFullBeat
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 125046772422175004, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
+      propertyPath: shrinkSize
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 125046772422175004, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
@@ -87,7 +99,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6759109746620646837, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
       propertyPath: isEveryBeat
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6759109746620646837, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
       propertyPath: fallBackFactor
@@ -184,7 +196,19 @@ PrefabInstance:
     m_TransformParent: {fileID: 3979038979400810454}
     m_Modifications:
     - target: {fileID: 125046772422175004, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
+      propertyPath: growSize
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 125046772422175004, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 125046772422175004, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
       propertyPath: OnFullBeat
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 125046772422175004, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
+      propertyPath: shrinkSize
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 125046772422175004, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
@@ -225,11 +249,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6759109746620646837, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
       propertyPath: OnFullBeat
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6759109746620646837, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
       propertyPath: isEveryBeat
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6759109746620646837, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
       propertyPath: fallBackFactor
@@ -326,7 +350,19 @@ PrefabInstance:
     m_TransformParent: {fileID: 3979038979400810454}
     m_Modifications:
     - target: {fileID: 125046772422175004, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
+      propertyPath: growSize
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 125046772422175004, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 125046772422175004, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
       propertyPath: OnFullBeat
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 125046772422175004, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
+      propertyPath: shrinkSize
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 125046772422175004, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
@@ -363,11 +399,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6759109746620646837, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
       propertyPath: OnFullBeat
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6759109746620646837, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
       propertyPath: isEveryBeat
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6759109746620646837, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
       propertyPath: fallBackFactor
@@ -468,8 +504,16 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 125046772422175004, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 125046772422175004, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
       propertyPath: OnFullBeat
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 125046772422175004, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
+      propertyPath: shrinkSize
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 125046772422175004, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
       propertyPath: isEveryBeat
@@ -497,7 +541,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6759109746620646837, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
       propertyPath: colorMultiplier
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6759109746620646837, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
       propertyPath: onBeatD8.Array.size
@@ -562,7 +606,19 @@ PrefabInstance:
     m_TransformParent: {fileID: 3979038979400810454}
     m_Modifications:
     - target: {fileID: 125046772422175004, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
+      propertyPath: growSize
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 125046772422175004, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 125046772422175004, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
       propertyPath: OnFullBeat
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 125046772422175004, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
+      propertyPath: shrinkSize
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 125046772422175004, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
@@ -599,11 +655,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6759109746620646837, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
       propertyPath: OnFullBeat
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6759109746620646837, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
       propertyPath: isEveryBeat
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6759109746620646837, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
       propertyPath: fallBackFactor
@@ -720,7 +776,19 @@ PrefabInstance:
     m_TransformParent: {fileID: 3979038979400810454}
     m_Modifications:
     - target: {fileID: 125046772422175004, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
+      propertyPath: growSize
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 125046772422175004, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 125046772422175004, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
       propertyPath: OnFullBeat
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 125046772422175004, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
+      propertyPath: shrinkSize
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 125046772422175004, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
@@ -761,11 +829,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6759109746620646837, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
       propertyPath: OnFullBeat
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6759109746620646837, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
       propertyPath: isEveryBeat
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6759109746620646837, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
       propertyPath: fallBackFactor
@@ -862,7 +930,19 @@ PrefabInstance:
     m_TransformParent: {fileID: 3979038979400810454}
     m_Modifications:
     - target: {fileID: 125046772422175004, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
+      propertyPath: growSize
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 125046772422175004, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 125046772422175004, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
       propertyPath: OnFullBeat
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 125046772422175004, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
+      propertyPath: shrinkSize
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 125046772422175004, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
@@ -903,11 +983,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6759109746620646837, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
       propertyPath: OnFullBeat
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6759109746620646837, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
       propertyPath: isEveryBeat
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6759109746620646837, guid: 9219e185696bfed46a89a77549e9f3d9, type: 3}
       propertyPath: fallBackFactor
