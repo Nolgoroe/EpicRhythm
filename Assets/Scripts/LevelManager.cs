@@ -21,10 +21,18 @@ public class LevelManager : MonoBehaviour
     IEnumerator OnStartLevelAction()
     {
         yield return new WaitForSeconds(afterStartDelayTime);
+        //start dialogue sequence;
+        // on end of dialogue sequence we start the game after X seconds
+
+        NarrativeManager.instance.StartNarrativeSequence();
+    }
+
+    public IEnumerator OnEndNarrative()
+    {
+        yield return new WaitForSeconds(2);
         BPM.beatOn = true;
         BPM.BPMinstance.source.Play();
     }
-
     public void OnDie()
     {
         BPM.beatOn = false;

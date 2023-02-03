@@ -1755,6 +1755,9 @@ MonoBehaviour:
   - {fileID: 664848567}
   - {fileID: 664848565}
   - {fileID: 664848563}
+  instance: 0
+  level: {fileID: 0}
+  lineIndicator: 0
 --- !u!65 &709306471 stripped
 BoxCollider:
   m_CorrespondingSourceObject: {fileID: 368837296580649022, guid: e7b4e917e33444a428f1d76c4080a7cb, type: 3}
@@ -2511,6 +2514,9 @@ MonoBehaviour:
   - {fileID: 2100576094}
   - {fileID: 1875527610}
   - {fileID: 1827032431}
+  instance: 0
+  level: {fileID: 0}
+  lineIndicator: 0
 --- !u!1001 &3850132783182740146
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2587,6 +2593,10 @@ PrefabInstance:
       propertyPath: onBeatD8.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1557807813372346773, guid: beea12dd78e496542a84ed085c0ebfc3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4353588261129989798, guid: beea12dd78e496542a84ed085c0ebfc3, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -2598,6 +2608,18 @@ PrefabInstance:
     - target: {fileID: 4353588261129989799, guid: beea12dd78e496542a84ed085c0ebfc3, type: 3}
       propertyPath: m_RootOrder
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4353588261129989799, guid: beea12dd78e496542a84ed085c0ebfc3, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4353588261129989799, guid: beea12dd78e496542a84ed085c0ebfc3, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4353588261129989799, guid: beea12dd78e496542a84ed085c0ebfc3, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4353588261129989799, guid: beea12dd78e496542a84ed085c0ebfc3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2639,9 +2661,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4353588261129989799, guid: beea12dd78e496542a84ed085c0ebfc3, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4353588261129989800, guid: beea12dd78e496542a84ed085c0ebfc3, type: 3}
       propertyPath: m_Name
       value: Avatar
+      objectReference: {fileID: 0}
+    - target: {fileID: 5412940776984544257, guid: beea12dd78e496542a84ed085c0ebfc3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: beea12dd78e496542a84ed085c0ebfc3, type: 3}
