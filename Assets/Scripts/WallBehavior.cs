@@ -14,11 +14,11 @@ public class WallBehavior : MonoBehaviour
 
     void Update()
     {
-        if (PlayerController.inputFailed)
-        {
-            mat.color = Color.red;
-        }
-        else
-            mat.color = Color.blue;
+        //if (PlayerController.inputFailed)
+        //{
+        //    mat.color = Color.red;
+        //}
+        //else
+        //    mat.color = Color.blue;
     }
 }

@@ -2,94 +2,196 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ActionType
+{
+    MoveLeft,
+    MoveRight,
+    Jump,
+    Crouch,
+    None
+}
 public class PlayerController : MonoBehaviour
 {
-    public static bool inputFailed;
+    //public static bool inputFailed;
 
     [SerializeField] KeyCode moveLeft;
     [SerializeField] KeyCode moveRight;
     [SerializeField] KeyCode jump;
 
-    private bool keyPressed;
+    //private bool keyPressed;
     private bool inAir;
+    private bool isCrouched;
+    private bool skipBeat;
 
-    void Start()
+    float timeInterval = 0;
+
+    public float limitXleft = -2;
+    public float limitXRight = 2;
+    public float limitYUp = 2;
+
+    public ActionType currentAction = ActionType.None;
+
+    int XPos = 0;
+    int YPos = 0;
+    private void Start()
     {
-
+        currentAction = ActionType.None;
     }
-
     void Update()
     {
+        timeInterval = BPM.BPMinstance.beatInterval;
+
+        DetectPlayerInput();
+
+        //if (BPM.beatFullAction)
+        //{
+        //    DetectPlayerInput();
+        //    //if (!keyPressed)
+        //    //{
+        //    //}
+        //}
+
+
         if (BPM.beatFull)
         {
-            keyPressed = false;
-            inputFailed = false;
+            //keyPressed = false;
+            //inputFailed = false;
+
             if (inAir)
             {
-                Drop();
-            }
-        }
-        if (BPM.beatFullAction)
-        {
-            if (!keyPressed)
-            {
                 HandleMovement();
+                skipBeat = true;
+                inAir = false;
             }
+
+            if (isCrouched)
+            {
+                skipBeat = true;
+                isCrouched = false;
+            }
+
+            if (skipBeat)
+            {
+                skipBeat = false;
+                DoActionsAfterBeatSkip();
+                return;
+            }
+
+            HandleMovement();
         }
-        
+
+
     }
-    void HandleMovement()
+
+    private void DetectPlayerInput()
     {
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            MoveLeft(new Vector3(transform.position.x - 2, transform.position.y, transform.position.z));
-            if (transform.position.x >= -2) transform.position = new Vector3(-2, transform.position.y, transform.position.z);
+            currentAction = ActionType.MoveLeft;
         }
+
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
-            MoveRight(new Vector3(transform.position.x + 2, transform.position.y, transform.position.z));
-            if (transform.position.x >= 2) transform.position = new Vector3(2, transform.position.y, transform.position.z);
+            currentAction = ActionType.MoveRight;
         }
+
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
-            Jump(new Vector3(transform.position.x, transform.position.y + 2, transform.position.z));
-            if (transform.position.y >= 2) transform.position = new Vector3(transform.position.x, 2, transform.position.z);
+            currentAction = ActionType.Jump;
         }
+
         if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
-            Crouch();
+            currentAction = ActionType.Crouch;
         }
     }
-    void MoveLeft(Vector3 target)
+
+    void HandleMovement()
     {
-        BPM.BPMinstance.ResetBeatActionTimer();
-        keyPressed = true;
-        LeanTween.move(gameObject, target, 0).setEase(LeanTweenType.linear);
+        if (currentAction == ActionType.None) return;
+
+
+        switch (currentAction)
+        {
+            case ActionType.MoveLeft:
+                if (transform.position.x - 2 < limitXleft) return;
+                MoveLeft();
+                break;
+            case ActionType.MoveRight:
+                if (transform.position.x + 2 > limitXRight) return;
+                MoveRight();
+                break;
+            case ActionType.Jump:
+                if (transform.position.y + 2 > limitYUp) return;
+                Jump();
+                break;
+            case ActionType.Crouch:
+                if (transform.localScale.y == 1) return;
+                Crouch();
+                break;
+            default:
+                break;
+        }
+
+        currentAction = ActionType.None;
     }
-    void MoveRight(Vector3 target)
+
+    void MoveLeft()
     {
-        keyPressed = true;
+        XPos -= 2;
+        if (XPos < -2) XPos = -2;
+
         BPM.BPMinstance.ResetBeatActionTimer();
-        LeanTween.move(gameObject, target, 0).setEase(LeanTweenType.linear);
+        //keyPressed = true;
+        LeanTween.moveX(gameObject, XPos, timeInterval).setEase(LeanTweenType.easeOutElastic);
     }
-    void Jump(Vector3 target)
+
+    void MoveRight()
     {
-        keyPressed = true;
+        XPos += 2;
+
+        if (XPos > 2) XPos = 2;
+        //keyPressed = true;
+        BPM.BPMinstance.ResetBeatActionTimer();
+        LeanTween.moveX(gameObject, XPos, timeInterval).setEase(LeanTweenType.easeOutElastic);
+    }
+    void Jump()
+    {
+        YPos += 2;
+
+        if (YPos > 2) YPos = 2;
+        //keyPressed = true;
         inAir = true;
         BPM.BPMinstance.ResetBeatActionTimer();
-        LeanTween.move(gameObject, target, 0).setEase(LeanTweenType.linear);
+        LeanTween.moveY(gameObject, YPos, timeInterval).setEase(LeanTweenType.easeOutElastic);
     }
-    void Drop()
+
+    void DoActionsAfterBeatSkip()
     {
-        LeanTween.move(gameObject, new Vector3(transform.position.x, transform.position.y - 2, transform.position.z), 0).setEase(LeanTweenType.linear);
-        inAir = false;
+        BPM.BPMinstance.ResetBeatActionTimer();
+
+        StandUp();
+
+        if (transform.position.y > 0.25f)
+        {
+            LeanTween.moveY(gameObject, 0, timeInterval).setEase(LeanTweenType.easeOutElastic);
+        }
     }
     void Crouch()
     {
-
+        isCrouched = true;
+        LeanTween.scaleY(gameObject, 1, timeInterval).setEase(LeanTweenType.easeOutElastic);
     }
     void StandUp()
     {
-
+        if (transform.localScale.y < 2)
+        {
+            LeanTween.scaleY(gameObject, 2, timeInterval).setEase(LeanTweenType.easeOutElastic);
+        }
     }
+
+    //void ResetMoveRight()
+    //{
+    //    transform.position = new Vector3(XNum, transform.position.y, transform.position.z);
+    //}
 }
