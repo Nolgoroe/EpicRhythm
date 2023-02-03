@@ -38,11 +38,18 @@ public class PlayerController : MonoBehaviour
     public ColorOnBeat colorOnBeat;
     private bool isCrouched;
     private bool skipBeat;
+
+
+
+    //Hp system
+    [SerializeField] int hp;
+    private int currentHp;
     private bool bumped;
     private void Start()
     {
         currentAction = ActionType.None;
         mat = meshRenderer.material;
+        currentHp = hp;
     }
     void Update()
     {
@@ -101,6 +108,8 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Bump!");
                 bumped = true;
                 mat.color = Color.red;
+                currentHp -= 1;
+                if()
             }
         }
     }
