@@ -28,4 +28,9 @@ public class SceneManagerObject : MonoBehaviour
         }
     }
 
+    public void OnGameStart()
+    {
+
+    }
+
 }

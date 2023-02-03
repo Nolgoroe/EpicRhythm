@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+
+    public Animator fadeAnim;
+    public float fadeDelayTime;
     void Start()
     {
         if (instance != null && instance != this)
@@ -20,11 +23,13 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManagerObject.instance.LoadSpecificScene(1);
+        fadeAnim.SetTrigger("Fade Now MainMenu");
+        StartCoroutine(OnEndFadeIn());
     }
 
-    public void OnDie()
+    IEnumerator OnEndFadeIn()
     {
-        SceneManagerObject.instance.LoadSpecificScene(0);
+        yield return new WaitForSeconds(fadeDelayTime);
+        SceneManagerObject.instance.LoadSpecificScene(1);
     }
 }

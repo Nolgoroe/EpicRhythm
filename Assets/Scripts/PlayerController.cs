@@ -124,7 +124,7 @@ public class PlayerController : MonoBehaviour
                 colorOnBeat.Colorize();
                 if (IsDead())
                 {
-                    GameManager.instance.OnDie();
+                    LevelManager.instance.OnDie();
                 }
             }
         }

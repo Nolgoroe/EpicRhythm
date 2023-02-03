@@ -26,6 +26,9 @@ public class BPM : MonoBehaviour
     [SerializeField] [Range(0, 1)] float actionRangeAfter;
     public float beatActionTimer;
 
+    public static bool beatOn;
+
+    public AudioSource source;
     private void Awake()
     {
         if(BPMinstance != null && BPMinstance != this)
@@ -41,7 +44,10 @@ public class BPM : MonoBehaviour
 
     private void Update()
     {
-        BeatDetection();
+        if(beatOn)
+        {
+            BeatDetection();
+        }
     }
 
     public void ResetBeatActionTimer()
