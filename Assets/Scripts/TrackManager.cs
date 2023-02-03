@@ -9,12 +9,12 @@ public class TrackManager : MonoBehaviour
     private bool gridSwitch;
     void Start()
     {
-        GridSwitch();
+        //GridSwitch();
     }
 
     void Update()
     {
-        BeatControl();
+        //BeatControl();
     }
     void BeatControl()
     {
