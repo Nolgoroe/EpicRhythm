@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+
     }
 
     void Update()
@@ -39,19 +40,25 @@ public class PlayerController : MonoBehaviour
     }
     void HandleMovement()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+        {
             MoveLeft(new Vector3(transform.position.x - 2, transform.position.y, transform.position.z));
-        if (Input.GetKeyDown(KeyCode.D))
+            if (transform.position.x >= -2) transform.position = new Vector3(-2, transform.position.y, transform.position.z);
+        }
+        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+        {
             MoveRight(new Vector3(transform.position.x + 2, transform.position.y, transform.position.z));
-        if (Input.GetKeyDown(KeyCode.Space))
+            if (transform.position.x >= 2) transform.position = new Vector3(2, transform.position.y, transform.position.z);
+        }
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+        {
             Jump(new Vector3(transform.position.x, transform.position.y + 2, transform.position.z));
-    }
-    void HandleMovementError()
-    {
-        if (Input.GetKeyDown(KeyCode.A))
-            inputFailed = true;
-        if (Input.GetKeyDown(KeyCode.D))
-            inputFailed = true;
+            if (transform.position.y >= 2) transform.position = new Vector3(transform.position.x, 2, transform.position.z);
+        }
+        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            Crouch();
+        }
     }
     void MoveLeft(Vector3 target)
     {
@@ -76,5 +83,13 @@ public class PlayerController : MonoBehaviour
     {
         LeanTween.move(gameObject, new Vector3(transform.position.x, transform.position.y - 2, transform.position.z), 0).setEase(LeanTweenType.linear);
         inAir = false;
+    }
+    void Crouch()
+    {
+
+    }
+    void StandUp()
+    {
+
     }
 }

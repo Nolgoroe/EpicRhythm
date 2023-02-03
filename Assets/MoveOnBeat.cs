@@ -9,8 +9,6 @@ public class MoveOnBeat : MonoBehaviour
     public Vector3 targetPos;
     private Vector3 currentPos;
 
-    public float moveSpeed;
-
     [Header("Beat settings")]
     [Range(0, 3)]
     public int OnFullBeat;
@@ -39,7 +37,7 @@ public class MoveOnBeat : MonoBehaviour
 
     void Move()
     {
-        LeanTween.moveLocal(gameObject, targetPos, moveSpeed).setEase(LeanTweenType.punch);
+        LeanTween.moveLocal(gameObject, targetPos, BPM.BPMinstance.beatInterval).setEase(LeanTweenType.punch);
     }
 
     void CheckBeat()
@@ -50,7 +48,10 @@ public class MoveOnBeat : MonoBehaviour
             {
                 Move();
             }
-
+            else
+            {
+                transform.localPosition = Vector3.zero;
+            }
             return;
         }
 
