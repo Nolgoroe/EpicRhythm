@@ -138,8 +138,9 @@ MonoBehaviour:
   limitXleft: -3
   limitXRight: 3
   limitYUp: 2.5
-  meshRenderer: {fileID: 4353588261031283187}
+  meshRenderer: {fileID: 0}
   colorOnBeat: {fileID: 6164944}
+  rippleEffect: {fileID: 0}
 --- !u!114 &6164944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,12 +155,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 4353588261031283190}
   material: {fileID: 2100000, guid: 0135e5b0a6567e04d97193f6a7f70d3c, type: 2}
-  materialColor: {r: 0, g: 0.61619616, b: 1, a: 0}
+  materialColor: {r: 0.8628178, g: 0.9339623, b: 0.13568883, a: 0}
   colorProperties: _EmissionColor
   fallBackFactor: 0.99
   colorMultiplier: 1
   OnFullBeat: 0
-  onBeatD8: 
+  onBeatD8: 00000000
   isEveryBeat: 0
 --- !u!65 &315206971
 BoxCollider:
@@ -186,7 +187,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0

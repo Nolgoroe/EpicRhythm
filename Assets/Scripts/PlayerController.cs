@@ -30,12 +30,14 @@ public class PlayerController : MonoBehaviour
     public float limitYUp = 2;
 
     [SerializeField] MeshRenderer meshRenderer;
-    Material mat;
+    Color matColor;
+    Color baseColor;
 
     int XPos = 0;
     int YPos = 0;
 
     public ColorOnBeat colorOnBeat;
+    public RipplePostProcessor rippleEffect;
     private bool isCrouched;
     private bool skipBeat;
 
@@ -48,7 +50,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         currentAction = ActionType.None;
-        mat = meshRenderer.material;
+        baseColor = colorOnBeat.materialColor;
         currentHp = hp;
     }
     void Update()
@@ -71,7 +73,8 @@ public class PlayerController : MonoBehaviour
             //keyPressed = false;
             //inputFailed = false;
             bumped = false;
-            mat.color = Color.blue;
+            matColor = baseColor;
+            colorOnBeat.materialColor = matColor;
             if (inAir)
             {
                 HandleMovement(inAir);
@@ -81,6 +84,8 @@ public class PlayerController : MonoBehaviour
 
             if (isCrouched)
             {
+                HandleMovement(inAir);
+
                 skipBeat = true;
                 isCrouched = false;
             }
@@ -107,9 +112,8 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("Bump!");
                 bumped = true;
-                mat.color = Color.red;
                 currentHp -= 1;
-                if()
+                colorOnBeat.materialColor = matColor;
             }
         }
     }
@@ -233,6 +237,7 @@ public class PlayerController : MonoBehaviour
         {
             LeanTween.moveY(gameObject, 0.25f, timeInterval).setEase(LeanTweenType.easeOutElastic);
             colorOnBeat.Colorize();
+            rippleEffect.Ripple();
         }
     }
     void Crouch()

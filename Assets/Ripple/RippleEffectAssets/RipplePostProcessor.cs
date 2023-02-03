@@ -50,7 +50,7 @@ public class RipplePostProcessor : MonoBehaviour
         if(BPM.beatFull)
         {
             // Ripple will only happen when we slam on tile
-            Ripple();
+            //Ripple();
         }
         //if (DEBUG_ToggleRipple)
         //{

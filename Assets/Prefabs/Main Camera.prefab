@@ -109,7 +109,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RippleMaterial: {fileID: 2100000, guid: a691ccd00ca4cb544a6a072616c6a0ea, type: 2}
-  MaxAmount: 4
+  MaxAmount: 5
   Friction: 0.9
   CurrentAmount: 0
   DEBUG_ToggleRipple: 0
