@@ -10,7 +10,7 @@ public class ObstacleTrackManager : MonoBehaviour
     [SerializeField] int instance;
     [SerializeField] LevelBuilder level;
 
-    private int lineIndicator;
+    public int lineIndicator;
     void Start()
     {
         
@@ -26,24 +26,25 @@ public class ObstacleTrackManager : MonoBehaviour
     }
     bool[] ReturnNextLine()
     {
+        if (lineIndicator == level.levelPreset.Length) lineIndicator = 0;
+        bool[] line = level.levelPreset[0].line;
         for (int i = 0; i < level.levelPreset.Length; i++)
         {
             if (i == lineIndicator)
             {
-                lineIndicator++;
-                return level.levelPreset[i].line;
+                line = level.levelPreset[i].line;
             }
         }
-        lineIndicator = 0;
-        return level.levelPreset[0].line;
+        lineIndicator++;
+        return line;
     }
     void LineControl()
     {
+        bool[] line = ReturnNextLine();
         for (int i = 0; i < meshObstacle.Length; i++)
         {
             if (i == 27 || i == 28 || i == 29)
             {
-                bool[] line = ReturnNextLine();
                 switch (instance)
                 {
                     case 1:
