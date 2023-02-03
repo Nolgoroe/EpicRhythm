@@ -12,16 +12,16 @@ public enum ActionType
 }
 public class PlayerController : MonoBehaviour
 {
+    public static bool inAir;
     //public static bool inputFailed;
+
+    public ActionType currentAction = ActionType.None;
 
     [SerializeField] KeyCode moveLeft;
     [SerializeField] KeyCode moveRight;
     [SerializeField] KeyCode jump;
 
     //private bool keyPressed;
-    private bool inAir;
-    private bool isCrouched;
-    private bool skipBeat;
 
     float timeInterval = 0;
 
@@ -29,15 +29,20 @@ public class PlayerController : MonoBehaviour
     public float limitXRight = 2;
     public float limitYUp = 2;
 
-    public ActionType currentAction = ActionType.None;
+    [SerializeField] MeshRenderer meshRenderer;
+    Material mat;
 
     int XPos = 0;
     int YPos = 0;
 
     public ColorOnBeat colorOnBeat;
+    private bool isCrouched;
+    private bool skipBeat;
+    private bool bumped;
     private void Start()
     {
         currentAction = ActionType.None;
+        mat = meshRenderer.material;
     }
     void Update()
     {
@@ -58,7 +63,8 @@ public class PlayerController : MonoBehaviour
         {
             //keyPressed = false;
             //inputFailed = false;
-
+            bumped = false;
+            mat.color = Color.blue;
             if (inAir)
             {
                 HandleMovement();
@@ -83,6 +89,20 @@ public class PlayerController : MonoBehaviour
         }
 
 
+    }
+    
+    //on Bump
+    private void OnCollisionStay(Collision collision)
+    {
+        if (BPM.beatFullAction && !bumped)
+        {
+            if (collision.gameObject.CompareTag("Obstacle"))
+            {
+                Debug.Log("Bump!");
+                bumped = true;
+                mat.color = Color.red;
+            }
+        }
     }
 
     private void DetectPlayerInput()
