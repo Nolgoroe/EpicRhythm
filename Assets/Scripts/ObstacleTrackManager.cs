@@ -25,14 +25,9 @@ public class ObstacleTrackManager : MonoBehaviour
         {
             if (i == 27 || i == 28 || i == 29)
             {
-                bool rand;
-                int randomNum = Random.Range(0, 101);
-                if (randomNum < 90)
-                    rand = false;
-                else
-                    rand = true;
-                meshObstacle[i].enabled = rand;
-                colliderObstacle[i].enabled = rand;
+                
+                //meshObstacle[i].enabled 
+                //colliderObstacle[i].enabled 
             }
             else if (i % 3 == 0)
             {
