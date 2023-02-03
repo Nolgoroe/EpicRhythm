@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 0135e5b0a6567e04d97193f6a7f70d3c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -107,6 +107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4353588261129989799}
   - component: {fileID: 4353588261129989798}
+  - component: {fileID: 6164944}
   m_Layer: 0
   m_Name: Avatar
   m_TagString: Untagged
@@ -149,3 +150,25 @@ MonoBehaviour:
   limitXRight: 3
   limitYUp: 2.5
   currentAction: 4
+  colorOnBeat: {fileID: 6164944}
+--- !u!114 &6164944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4353588261129989800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed430de08c1e91a44938ba12dded64e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 4353588261031283190}
+  material: {fileID: 2100000, guid: 0135e5b0a6567e04d97193f6a7f70d3c, type: 2}
+  materialColor: {r: 0, g: 0.61619616, b: 1, a: 0}
+  colorProperties: _EmissionColor
+  fallBackFactor: 0.99
+  colorMultiplier: 1
+  OnFullBeat: 0
+  onBeatD8: 
+  isEveryBeat: 0

@@ -64,7 +64,7 @@ public class ColorOnBeat : MonoBehaviour
         }
     }
 
-    void Colorize()
+    public void Colorize()
     {
         colorStrength = 1;
     }

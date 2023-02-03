@@ -33,6 +33,8 @@ public class PlayerController : MonoBehaviour
 
     int XPos = 0;
     int YPos = 0;
+
+    public ColorOnBeat colorOnBeat;
     private void Start()
     {
         currentAction = ActionType.None;
@@ -175,6 +177,7 @@ public class PlayerController : MonoBehaviour
         if (transform.position.y > 0.25f)
         {
             LeanTween.moveY(gameObject, 0, timeInterval).setEase(LeanTweenType.easeOutElastic);
+            colorOnBeat.Colorize();
         }
     }
     void Crouch()
