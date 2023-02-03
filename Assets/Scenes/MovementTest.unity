@@ -3240,19 +3240,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 315206971, guid: beea12dd78e496542a84ed085c0ebfc3, type: 3}
       propertyPath: m_Size.x
-      value: 0.56
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 315206971, guid: beea12dd78e496542a84ed085c0ebfc3, type: 3}
       propertyPath: m_Size.y
-      value: 0.56
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 315206971, guid: beea12dd78e496542a84ed085c0ebfc3, type: 3}
       propertyPath: m_Size.z
-      value: 0.35
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 315206971, guid: beea12dd78e496542a84ed085c0ebfc3, type: 3}
       propertyPath: m_Center.y
-      value: 1.01
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4353588261031283191, guid: beea12dd78e496542a84ed085c0ebfc3, type: 3}
       propertyPath: m_IsActive
