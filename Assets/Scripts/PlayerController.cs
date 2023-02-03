@@ -29,7 +29,6 @@ public class PlayerController : MonoBehaviour
     public float limitXRight = 2;
     public float limitYUp = 2;
 
-    [SerializeField] MeshRenderer meshRenderer;
     Color matColor;
     Color baseColor;
 
@@ -44,6 +43,7 @@ public class PlayerController : MonoBehaviour
 
 
     //Hp system
+    [SerializeField] GameObject[] hearts;
     [SerializeField] int hp;
     private int currentHp;
     private bool bumped;
@@ -67,42 +67,47 @@ public class PlayerController : MonoBehaviour
         //    //}
         //}
 
+        HeartsUpdate();
 
         if (BPM.beatFull)
         {
-            //keyPressed = false;
-            //inputFailed = false;
-            bumped = false;
-            matColor = baseColor;
-            colorOnBeat.materialColor = matColor;
-            if (inAir)
-            {
-                HandleMovement(inAir);
-                skipBeat = true;
-                inAir = false;
-            }
-
-            if (isCrouched)
-            {
-                HandleMovement(inAir);
-
-                skipBeat = true;
-                isCrouched = false;
-            }
-
-            if (skipBeat)
-            {
-                skipBeat = false;
-                DoActionsAfterBeatSkip();
-                return;
-            }
-
-            HandleMovement();
+            OnBeatOccurrence();
         }
 
 
     }
-    
+    void OnBeatOccurrence()
+    {
+        //keyPressed = false;
+        //inputFailed = false;
+        bumped = false;
+        matColor = baseColor;
+        colorOnBeat.materialColor = matColor;
+        if (inAir)
+        {
+            HandleMovement(inAir);
+            skipBeat = true;
+            inAir = false;
+        }
+
+        if (isCrouched)
+        {
+            HandleMovement(inAir);
+
+            skipBeat = true;
+            isCrouched = false;
+        }
+
+        if (skipBeat)
+        {
+            skipBeat = false;
+            DoActionsAfterBeatSkip();
+            return;
+        }
+
+        HandleMovement();
+    }
+
     //on Bump
     private void OnCollisionStay(Collision collision)
     {
@@ -114,9 +119,60 @@ public class PlayerController : MonoBehaviour
                 bumped = true;
                 currentHp -= 1;
                 colorOnBeat.materialColor = matColor;
+                if (IsDead())
+                {
+                    Debug.Log("Game Over");
+                }
             }
         }
     }
+    void HeartsUpdate()
+    {
+        switch (currentHp)
+        {
+            case 1:
+                hearts[0].SetActive(true);
+                hearts[1].SetActive(false);
+                hearts[2].SetActive(false);
+                hearts[3].SetActive(false);
+                hearts[4].SetActive(false);
+                break;
+            case 2:
+                hearts[0].SetActive(true);
+                hearts[1].SetActive(true);
+                hearts[2].SetActive(false);
+                hearts[3].SetActive(false);
+                hearts[4].SetActive(false);
+                break;
+            case 3:
+                hearts[0].SetActive(true);
+                hearts[1].SetActive(true);
+                hearts[2].SetActive(true);
+                hearts[3].SetActive(false);
+                hearts[4].SetActive(false);
+                break;
+            case 4:
+                hearts[0].SetActive(true);
+                hearts[1].SetActive(true);
+                hearts[2].SetActive(true);
+                hearts[3].SetActive(true);
+                hearts[4].SetActive(false);
+                break;
+            case 5:
+                hearts[0].SetActive(true);
+                hearts[1].SetActive(true);
+                hearts[2].SetActive(true);
+                hearts[3].SetActive(true);
+                hearts[4].SetActive(true);
+                break;
+        }
+    }
+    bool IsDead()
+    {
+        if (currentHp == 0) return true;
+        else return false;
+    }
+
 
     private void DetectPlayerInput()
     {
@@ -253,8 +309,5 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //void ResetMoveRight()
-    //{
-    //    transform.position = new Vector3(XNum, transform.position.y, transform.position.z);
-    //}
+   
 }
