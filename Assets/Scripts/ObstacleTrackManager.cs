@@ -6,6 +6,11 @@ public class ObstacleTrackManager : MonoBehaviour
 {
     public MeshRenderer[] meshObstacle;
     public BoxCollider[] colliderObstacle;
+
+    [SerializeField] int instance;
+    [SerializeField] LevelBuilder level;
+
+    private int lineIndicator;
     void Start()
     {
         
@@ -19,15 +24,45 @@ public class ObstacleTrackManager : MonoBehaviour
             if (PlayerController.inAir) DisableColliderFirstLine();
         }
     }
+    bool[] ReturnNextLine()
+    {
+        for (int i = 0; i < level.levelPreset.Length; i++)
+        {
+            if (i == lineIndicator)
+            {
+                lineIndicator++;
+                return level.levelPreset[i].line;
+            }
+        }
+        lineIndicator = 0;
+        return level.levelPreset[0].line;
+    }
     void LineControl()
     {
         for (int i = 0; i < meshObstacle.Length; i++)
         {
             if (i == 27 || i == 28 || i == 29)
             {
-                
-                //meshObstacle[i].enabled 
-                //colliderObstacle[i].enabled 
+                bool[] line = ReturnNextLine();
+                switch (instance)
+                {
+                    case 1:
+                        meshObstacle[27].enabled = line[0];
+                        colliderObstacle[27].enabled = line[0];
+                        meshObstacle[28].enabled = line[1];
+                        colliderObstacle[28].enabled = line[1];
+                        meshObstacle[29].enabled = line[2];
+                        colliderObstacle[29].enabled = line[2];
+                        break;
+                    case 2:
+                        meshObstacle[27].enabled = line[3];
+                        colliderObstacle[27].enabled = line[3];
+                        meshObstacle[28].enabled = line[4];
+                        colliderObstacle[28].enabled = line[4];
+                        meshObstacle[29].enabled = line[5];
+                        colliderObstacle[29].enabled = line[5];
+                        break;
+                }
             }
             else if (i % 3 == 0)
             {
