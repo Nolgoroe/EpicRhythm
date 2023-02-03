@@ -26,7 +26,6 @@ public class ColorOnBeat : MonoBehaviour
     public int[] onBeatD8;
     public bool isEveryBeat;
 
-    bool activate = false;
     void Start()
     {
         if (target != null)
@@ -46,12 +45,6 @@ public class ColorOnBeat : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            activate = true;
-        }
-
-        if (!activate) return;
         if(colorStrength > 0)
         {
             colorStrength *= fallBackFactor;

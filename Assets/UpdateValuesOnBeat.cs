@@ -24,8 +24,6 @@ public class UpdateValuesOnBeat : MonoBehaviour
     [Range(0, 7)]
     public int[] onBeatD8;
     public bool isEveryBeat;
-
-    bool activate = false;
     void Start()
     {
         if(processVolume == null)
@@ -39,12 +37,6 @@ public class UpdateValuesOnBeat : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            activate = true;
-        }
-
-        if (!activate) return;
 
         if (currentDistortion > shrinkDistortion)
         {
@@ -54,13 +46,6 @@ public class UpdateValuesOnBeat : MonoBehaviour
         {
             currentDistortion = shrinkDistortion;
         }
-
-
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            isEveryBeat = true;
-        }
-
 
         CheckBeat();
 

@@ -30,15 +30,8 @@ public class GrowOnBeat : MonoBehaviour
         currentSize = shrinkSize;
     }
 
-    bool activate = false;
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            activate = true;
-        }
-
-        if (!activate) return;
 
         if (currentSize > shrinkSize)
         {
