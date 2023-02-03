@@ -970,7 +970,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IsGlobal: 1
-  priority: 0
+  priority: 1
   blendDistance: 0
   weight: 1
   sharedProfile: {fileID: 11400000, guid: d6796e5721b3ebc4e8f374910493d6c8, type: 2}
@@ -3635,7 +3635,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 366620d49c136f44c8ffcd8b913f5edc, type: 2}
+  - {fileID: 2100000, guid: d73b2fcf68816de44af3f10a35d9f1c5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
