@@ -4,14 +4,21 @@ using UnityEngine;
 
 public class WallBehavior : MonoBehaviour
 {
-    private Material material;
+    private MeshRenderer renderer;
+    private Material mat;
     void Start()
     {
-        material = GetComponent<Material>();
+        renderer = GetComponent<MeshRenderer>();
+        mat = renderer.material;
     }
 
     void Update()
     {
-
+        if (PlayerController.inputFailed)
+        {
+            mat.color = Color.red;
+        }
+        else
+            mat.color = Color.blue;
     }
 }
