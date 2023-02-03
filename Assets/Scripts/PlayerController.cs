@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour
 {
     //position
     public static bool inAir;
-    public static bool land;
     public static int currentPos = 1;
 
     public ActionType currentAction = ActionType.None;
@@ -111,7 +110,6 @@ public class PlayerController : MonoBehaviour
             DoActionsAfterBeatSkip();
             return;
         }
-        land = false;
         HandleMovement();
     }
 
@@ -294,7 +292,7 @@ public class PlayerController : MonoBehaviour
     void DoActionsAfterBeatSkip()
     {
         BPM.BPMinstance.ResetBeatActionTimer();
-        TileGlowOnLand.Slam();
+        //TileGlowOnLand.Slam();
         StandUp();
 
         if (transform.position.y > 0.3f)

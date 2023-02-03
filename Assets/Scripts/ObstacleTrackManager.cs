@@ -11,11 +11,8 @@ public class ObstacleTrackManager : MonoBehaviour
     [SerializeField] LevelBuilder level;
 
     public int lineIndicator;
-    void Start()
-    {
-        
-    }
 
+    private bool emptyLine;
     void Update()
     {
         if (BPM.beatFull)
@@ -38,9 +35,28 @@ public class ObstacleTrackManager : MonoBehaviour
         lineIndicator++;
         return line;
     }
+    bool[] ReturnEmptyLine()
+    {
+        bool[] line = new bool[6];
+        for (int i = 0; i < 6; i++)
+        {
+            line[i] = false;
+        }
+        return line;
+    }
     void LineControl()
     {
-        bool[] line = ReturnNextLine();
+        bool[] line;
+        if (!emptyLine)
+        {
+            line = ReturnNextLine();
+            emptyLine = true;
+        }
+        else
+        {
+            line = ReturnEmptyLine();
+            emptyLine = false;
+        }
         for (int i = 0; i < meshObstacle.Length; i++)
         {
             if (i == 27 || i == 28 || i == 29)

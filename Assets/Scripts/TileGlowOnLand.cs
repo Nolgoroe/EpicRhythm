@@ -14,16 +14,26 @@ public class TileGlowOnLand : MonoBehaviour
     {
         rowGlow = glowOnAllRows;
     }
-
-    void Update()
+   
+    public void Slam()
     {
-        if (BPM.beatFull)
+        if (rowGlow)
         {
-            
+
         }
-    }
-    public static void Slam()
-    {
-        Debug.Log("Slam!");
+        else
+        {
+            switch (PlayerController.currentPos)
+            {
+                case 0:
+                    firstLine[0].GetComponent<MeshRenderer>().material.color = Color.cyan;
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+            }
+        }
+        
     }
 }
