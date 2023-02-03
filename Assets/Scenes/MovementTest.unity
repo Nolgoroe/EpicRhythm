@@ -404,6 +404,17 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+--- !u!114 &161758207 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3850132784610688939, guid: 65b2b7c7dbae29942ba3a9762b52ca00, type: 3}
+  m_PrefabInstance: {fileID: 3850132783182740146}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 712e66ffa21bde44ba8d3aa445fbee7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &175120239 stripped
 BoxCollider:
   m_CorrespondingSourceObject: {fileID: 2889747880489721030, guid: e7b4e917e33444a428f1d76c4080a7cb, type: 3}
@@ -2554,14 +2565,6 @@ PrefabInstance:
     - target: {fileID: 4353588261129989800, guid: beea12dd78e496542a84ed085c0ebfc3, type: 3}
       propertyPath: m_Name
       value: Avatar
-      objectReference: {fileID: 0}
-    - target: {fileID: 6796282289971579648, guid: beea12dd78e496542a84ed085c0ebfc3, type: 3}
-      propertyPath: m_Constraints
-      value: 126
-      objectReference: {fileID: 0}
-    - target: {fileID: 6796282289971579648, guid: beea12dd78e496542a84ed085c0ebfc3, type: 3}
-      propertyPath: m_IsKinematic
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: beea12dd78e496542a84ed085c0ebfc3, type: 3}

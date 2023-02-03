@@ -118,7 +118,8 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Bump!");
                 bumped = true;
                 currentHp -= 1;
-                colorOnBeat.materialColor = matColor;
+                colorOnBeat.materialColor = Color.red;
+                colorOnBeat.Colorize();
                 if (IsDead())
                 {
                     Debug.Log("Game Over");

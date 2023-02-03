@@ -141,6 +141,7 @@ MonoBehaviour:
   meshRenderer: {fileID: 0}
   colorOnBeat: {fileID: 6164944}
   rippleEffect: {fileID: 0}
+  hp: 0
 --- !u!114 &6164944
 MonoBehaviour:
   m_ObjectHideFlags: 0
