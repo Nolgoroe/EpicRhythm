@@ -2490,10 +2490,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6164944, guid: beea12dd78e496542a84ed085c0ebfc3, type: 3}
+      propertyPath: onBeatD8.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4353588261129989798, guid: beea12dd78e496542a84ed085c0ebfc3, type: 3}
       propertyPath: hp
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 4353588261129989798, guid: beea12dd78e496542a84ed085c0ebfc3, type: 3}
+      propertyPath: rippleEffect
+      value: 
+      objectReference: {fileID: 161758207}
     - target: {fileID: 4353588261129989798, guid: beea12dd78e496542a84ed085c0ebfc3, type: 3}
       propertyPath: hearts.Array.size
       value: 5
