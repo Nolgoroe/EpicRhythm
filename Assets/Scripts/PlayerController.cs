@@ -50,11 +50,14 @@ public class PlayerController : MonoBehaviour
 
     public Animator playerAnim;
 
+
+    private TileGlowOnLand tileGlow;
     private void Start()
     {
         currentAction = ActionType.None;
         baseColor = colorOnBeat.materialColor;
         currentHp = hp;
+        tileGlow = GetComponent<TileGlowOnLand>();
     }
     void Update()
     {
@@ -295,12 +298,11 @@ public class PlayerController : MonoBehaviour
     void DoActionsAfterBeatSkip()
     {
         BPM.BPMinstance.ResetBeatActionTimer();
-        //TileGlowOnLand.Slam();
         StandUp();
 
         if (transform.position.y > 0.3f)
         {
-            
+            tileGlow.Slam();
             LeanTween.moveY(gameObject, 0.25f, timeInterval).setEase(leanType);
             rippleEffect.Ripple();
         }
