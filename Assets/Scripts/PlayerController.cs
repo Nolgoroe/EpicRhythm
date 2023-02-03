@@ -126,7 +126,6 @@ public class PlayerController : MonoBehaviour
         {
             if (collision.gameObject.CompareTag("Obstacle"))
             {
-                Debug.Log("Bump!");
                 bumped = true;
                 currentHp -= 1;
                 colorOnBeat.materialColor = Color.red;
@@ -206,6 +205,10 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
             currentAction = ActionType.Crouch;
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            NextLevelTrackBehavior.stopSpawningObstacles = true;
         }
     }
 

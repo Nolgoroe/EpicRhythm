@@ -8,8 +8,6 @@ public class TileGlowOnLand : MonoBehaviour
     [SerializeField] bool glowOnAllRows;
     [SerializeField] MeshRenderer[] firstLine;
     [SerializeField] ParticleSystem[] slamParticleEffect;
-    [SerializeField] ParticleSystem[] crackEffect;
-    [SerializeField] GameObject[] crackObject;
 
     private Color defaultColor;
     void Start()
@@ -20,9 +18,9 @@ public class TileGlowOnLand : MonoBehaviour
     {
         if (BPM.beatFull)
         {
-            firstLine[0].material.color = defaultColor;
-            firstLine[1].material.color = defaultColor;
-            firstLine[2].material.color = defaultColor;
+            firstLine[0].enabled = true;
+            firstLine[1].enabled = true;
+            firstLine[2].enabled = true;
         }
     }
 
@@ -32,16 +30,16 @@ public class TileGlowOnLand : MonoBehaviour
         switch (PlayerController.currentPos)
         {
             case 0:
-               firstLine[0].material.color = Color.green;
+                firstLine[0].enabled = false;
                 slamParticleEffect[0].Play();
                 break;
             case 1:
                 slamParticleEffect[1].Play();
-               firstLine[1].material.color = Color.green;
+               firstLine[1].enabled = false;
                 break;
             case 2:
                 slamParticleEffect[2].Play();
-               firstLine[2].material.color = Color.green;
+               firstLine[2].enabled = false;
                 break;
         }
         

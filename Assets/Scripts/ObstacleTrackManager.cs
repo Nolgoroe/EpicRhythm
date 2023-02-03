@@ -47,7 +47,12 @@ public class ObstacleTrackManager : MonoBehaviour
     void LineControl()
     {
         bool[] line;
-        if (!emptyLine)
+        if (NextLevelTrackBehavior.stopSpawningObstacles)
+        {
+            line = ReturnEmptyLine();
+            emptyLine = false;
+        }
+        else if (!emptyLine)
         {
             line = ReturnNextLine();
             emptyLine = true;
