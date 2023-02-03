@@ -47,6 +47,9 @@ public class PlayerController : MonoBehaviour
     private bool bumped;
 
     LeanTweenType leanType = LeanTweenType.easeOutElastic;
+
+    public Animator playerAnim;
+
     private void Start()
     {
         currentAction = ActionType.None;
@@ -309,9 +312,9 @@ public class PlayerController : MonoBehaviour
     }
     void StandUp()
     {
-        if (transform.localScale.y < 2)
+        if (transform.localScale.y < 1.5f)
         {
-            LeanTween.scaleY(gameObject, 2, timeInterval).setEase(leanType);
+            LeanTween.scaleY(gameObject, 1.6f, timeInterval).setEase(leanType);
         }
     }
 
