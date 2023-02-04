@@ -74,8 +74,7 @@ public class NextLevelTrackBehavior : MonoBehaviour
                 if (!volumeBoxMoved) BoxVolumeMove();
                 if (!portalBoxMoved) PortalMove();
                 ChangeTiles();
-                ChangeObstacles(obstacles1);
-                ChangeObstacles(obstacles2);
+                
             }
         }
     }
@@ -144,6 +143,8 @@ public class NextLevelTrackBehavior : MonoBehaviour
     }
     void ChangeLevel()
     {
+        ChangeObstacles(obstacles1);
+        ChangeObstacles(obstacles2);
         stopSpawningObstacles = false;
         bpmScript.musicBPM = 120;
         fadeIn();

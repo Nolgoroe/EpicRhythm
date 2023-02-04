@@ -72,8 +72,8 @@ public class TutorialManager : MonoBehaviour
     }
     public void StopBPM()
     {
-        BPM.beatOn = false;
-        BPM.BPMinstance.source.Pause();
+        //BPM.beatOn = false;
+        //BPM.BPMinstance.source.Pause();
     }
 
     public IEnumerator FadeInImage()
