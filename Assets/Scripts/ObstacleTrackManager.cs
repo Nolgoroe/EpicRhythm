@@ -66,25 +66,25 @@ public class ObstacleTrackManager : MonoBehaviour
         }
         for (int i = 0; i < meshObstacle.Length; i++)
         {
-            if (i == 117 || i == 118 || i == 119)
+            if (i == 27 || i == 28 || i == 29)
             {
                 switch (instance)
                 {
                     case 1:
-                        meshObstacle[117].enabled = line[0];
-                        colliderObstacle[117].enabled = line[0];
-                        meshObstacle[118].enabled = line[1];
-                        colliderObstacle[118].enabled = line[1];
-                        meshObstacle[119].enabled = line[2];
-                        colliderObstacle[119].enabled = line[2];
+                        meshObstacle[27].enabled = line[0];
+                        colliderObstacle[27].enabled = line[0];
+                        meshObstacle[28].enabled = line[1];
+                        colliderObstacle[28].enabled = line[1];
+                        meshObstacle[29].enabled = line[2];
+                        colliderObstacle[29].enabled = line[2];
                         break;
                     case 2:
-                        meshObstacle[117].enabled = line[3];
-                        colliderObstacle[117].enabled = line[3];
-                        meshObstacle[118].enabled = line[4];
-                        colliderObstacle[118].enabled = line[4];
-                        meshObstacle[119].enabled = line[5];
-                        colliderObstacle[119].enabled = line[5];
+                        meshObstacle[27].enabled = line[3];
+                        colliderObstacle[27].enabled = line[3];
+                        meshObstacle[28].enabled = line[4];
+                        colliderObstacle[28].enabled = line[4];
+                        meshObstacle[29].enabled = line[5];
+                        colliderObstacle[29].enabled = line[5];
                         break;
                 }
             }
