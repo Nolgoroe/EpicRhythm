@@ -7,7 +7,7 @@ public class TutorialManager : MonoBehaviour
 {
     public static TutorialManager instance;
 
-    public NarrativeSO tutorialSO;
+    public NarrativeSO[] tutorialSO;
     public Button nextElementButton;
     public Image imageObject;
 
@@ -26,13 +26,13 @@ public class TutorialManager : MonoBehaviour
         if (!BPM.beatOn) return;
         Debug.Log(BPM.beatCountFull);
 
-        if(BPM.beatCountFull == 10 && !alreadyHappned)
+        if(BPM.beatCountFull == 5 && !alreadyHappned)
         {
             alreadyHappned = true;
             StartCoroutine(FadeInImage());
         }
 
-        if(BPM.beatCountFull != 10 && BPM.beatFull)
+        if(BPM.beatCountFull != 5 && BPM.beatFull)
         {
             alreadyHappned = false;
         }
@@ -49,7 +49,7 @@ public class TutorialManager : MonoBehaviour
         tutorialCanvas.gameObject.SetActive(true);
 
         nextElementButton.interactable = false;
-        float time = tutorialSO.narrativeElements[tutorialIndex].fadeInTime;
+        float time = tutorialSO[tutorialIndex].narrativeElements[tutorialIndex].fadeInTime;
 
 
         LeanTween.value(imageObject.gameObject, 0, 1, time).setOnUpdate((float val) =>
@@ -65,7 +65,7 @@ public class TutorialManager : MonoBehaviour
     }
     public IEnumerator FadeOutImage()
     {
-        float time = tutorialSO.narrativeElements[tutorialIndex].fadeOutTime;
+        float time = tutorialSO[tutorialIndex].narrativeElements[tutorialIndex].fadeOutTime;
 
         LeanTween.value(imageObject.gameObject, 1, 0, time).setOnUpdate((float val) =>
         {

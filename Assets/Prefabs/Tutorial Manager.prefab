@@ -44,6 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 778a99b3b291896458e310102979a148, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialSO: {fileID: 11400000, guid: ae445a67efeac4e4f8539dae827ba020, type: 2}
+  tutorialSO:
+  - {fileID: 11400000, guid: ae445a67efeac4e4f8539dae827ba020, type: 2}
   nextElementButton: {fileID: 0}
   imageObject: {fileID: 0}
+  tutorialCanvas: {fileID: 0}
+  tutorialIndex: 0
