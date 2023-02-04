@@ -2281,7 +2281,7 @@ MonoBehaviour:
   fadeAnim: {fileID: 1436187096}
   afterStartDelayTime: 1.5
   afterDieDelayTime: 1.5
-  doNarrative: 0
+  doNarrative: 1
 --- !u!4 &181673247
 Transform:
   m_ObjectHideFlags: 0
@@ -18116,7 +18116,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1585843414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26570,6 +26570,10 @@ PrefabInstance:
     - target: {fileID: 4064021624847927480, guid: beea12dd78e496542a84ed085c0ebfc3, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4353588261129989798, guid: beea12dd78e496542a84ed085c0ebfc3, type: 3}
+      propertyPath: hp
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4353588261129989798, guid: beea12dd78e496542a84ed085c0ebfc3, type: 3}
       propertyPath: dashEffect

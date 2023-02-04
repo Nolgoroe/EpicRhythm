@@ -307,9 +307,9 @@ public class PlayerController : MonoBehaviour
     {
         BPM.BPMinstance.ResetBeatActionTimer();
         StandUp();
-        dashEffects[3].SetActive(true);
         if (transform.position.y > 0.3f)
         {
+            dashEffects[3].SetActive(true);
             tileGlow.Slam();
             LeanTween.moveY(gameObject, 0.25f, timeInterval).setEase(leanType);
             rippleEffect.Ripple();
