@@ -15,6 +15,8 @@ public class ObstacleTrackManager : MonoBehaviour
     private bool emptyLine;
     void Update()
     {
+        if (!BPM.beatOn) return;
+
         if (BPM.beatFull)
         {
             LineControl();

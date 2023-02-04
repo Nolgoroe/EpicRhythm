@@ -9,10 +9,14 @@ public class TileBehavior : MonoBehaviour
    
     void Update()
     {
-        if (BPM.beatFull)
+        if(BPM.beatOn)
         {
-            ActionPerBeatUpdate();
+            if (BPM.beatFull)
+            {
+                ActionPerBeatUpdate();
+            }
         }
+ 
     }
    
     void ActionPerBeatUpdate()

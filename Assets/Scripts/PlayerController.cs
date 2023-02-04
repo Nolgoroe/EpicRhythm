@@ -61,6 +61,8 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
+        if (!BPM.beatOn) return;
+
         timeInterval = BPM.BPMinstance.beatInterval;
 
         DetectPlayerInput();

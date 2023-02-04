@@ -37,6 +37,7 @@ public class UpdateValuesOnBeat : MonoBehaviour
 
     void Update()
     {
+        if (!BPM.beatOn) return;
 
         if (currentDistortion > shrinkDistortion)
         {

@@ -16,6 +16,8 @@ public class TileGlowOnLand : MonoBehaviour
     }
     private void Update()
     {
+        if (!BPM.beatOn) return;
+
         if (BPM.beatFull)
         {
             firstLine[0].enabled = true;

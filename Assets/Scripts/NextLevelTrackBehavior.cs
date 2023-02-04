@@ -25,6 +25,8 @@ public class NextLevelTrackBehavior : MonoBehaviour
     private int slamTileWait;
     private void Update()
     {
+        if (!BPM.beatOn) return;
+
         if (BPM.beatFull)
         {
             startCountingToNextLevel++;

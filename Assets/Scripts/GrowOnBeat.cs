@@ -32,6 +32,7 @@ public class GrowOnBeat : MonoBehaviour
 
     void Update()
     {
+        if (!BPM.beatOn) return;
 
         if (currentSize > shrinkSize)
         {

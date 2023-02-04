@@ -77,7 +77,9 @@ public class ColorOnBeat : MonoBehaviour
 
     void Update()
     {
-        if(colorStrength > 1)
+        if (!BPM.beatOn) return;
+
+        if (colorStrength > 1)
         {
             colorStrength *= fallBackFactor;
         }

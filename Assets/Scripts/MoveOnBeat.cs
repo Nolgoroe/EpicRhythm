@@ -27,6 +27,8 @@ public class MoveOnBeat : MonoBehaviour
 
     void Update()
     {
+        if (!BPM.beatOn) return;
+
         CheckBeat();
 
         if (Input.GetKeyDown(KeyCode.X))

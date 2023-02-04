@@ -34,6 +34,11 @@ public class LevelManager : MonoBehaviour
         BPM.beatOn = true;
         BPM.BPMinstance.source.Play();
     }
+    public void OnEndTutorial()
+    {
+        BPM.beatOn = true;
+        BPM.BPMinstance.source.UnPause();
+    }
     public void OnDie()
     {
         BPM.beatOn = false;
