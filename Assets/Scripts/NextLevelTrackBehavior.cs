@@ -52,9 +52,9 @@ public class NextLevelTrackBehavior : MonoBehaviour
     {
         if (slamTileWait == 9)
         {
-            slamTiles[0].material.SetTexture("_EmissionMap", piano);
-            slamTiles[1].material.SetTexture("_EmissionMap", piano);
-            slamTiles[2].material.SetTexture("_EmissionMap", piano);
+            slamTiles[0].material.SetTexture("_EmissionMap", neon);
+            slamTiles[1].material.SetTexture("_EmissionMap", neon);
+            slamTiles[2].material.SetTexture("_EmissionMap", neon);
         }
         slamTileWait++;
         for (int i = 0; i < Tiles.Length; i++)
@@ -62,7 +62,7 @@ public class NextLevelTrackBehavior : MonoBehaviour
             
             if (i == 27 || i == 28 || i == 29)
             {
-                Tiles[i].material.SetTexture("_EmissionMap", piano);
+                Tiles[i].material.SetTexture("_EmissionMap", neon);
             }
             else if (i % 3 == 0)
             {
@@ -81,7 +81,9 @@ public class NextLevelTrackBehavior : MonoBehaviour
     void BoxVolumeMove()
     {
         if (boxVolume.transform.position.z <= 0)
+        {
             return;
+        }
         else
             boxVolume.transform.Translate(0, 0, -2);
 ;    }
