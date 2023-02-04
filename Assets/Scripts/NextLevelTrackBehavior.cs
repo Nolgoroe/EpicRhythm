@@ -14,11 +14,6 @@ public class NextLevelTrackBehavior : MonoBehaviour
     public MeshRenderer[] slamTiles;
     public GameObject boxVolume;
 
-    public GameObject bpm;
-    public GameObject nextSong;
-    private BPM bpmScript;
-    private AudioSource currentSong;
-    [SerializeField] float transitionsTime;
 
     [SerializeField] Texture neon;
     [SerializeField] Texture piano;
@@ -33,8 +28,7 @@ public class NextLevelTrackBehavior : MonoBehaviour
     private bool volumeBoxMoved;
     private void Start()
     {
-        bpmScript = bpm.GetComponent<BPM>();
-        currentSong = bpm.GetComponent<AudioSource>();
+
     }
     private void Update()
     {
@@ -43,7 +37,7 @@ public class NextLevelTrackBehavior : MonoBehaviour
         if (BPM.beatFull)
         {
             startCountingToNextLevel++;
-            if (startCountingToNextLevel == 80)
+            if (startCountingToNextLevel == 60)
             {
                 stopSpawningObstacles = true;
             }
@@ -63,7 +57,7 @@ public class NextLevelTrackBehavior : MonoBehaviour
 
     void ChangeTiles()
     {
-        if (slamTileWait == 39)
+        if (slamTileWait == 9)
         {
             ChangeLevel();
         }
@@ -71,7 +65,7 @@ public class NextLevelTrackBehavior : MonoBehaviour
         for (int i = 0; i < Tiles.Length; i++)
         {
             
-            if (i == 117 || i == 118 || i == 119)
+            if (i == 27 || i == 28 || i == 29)
             {
                 Tiles[i].material.SetTexture("_EmissionMap", neon);
             }
@@ -101,17 +95,6 @@ public class NextLevelTrackBehavior : MonoBehaviour
      }
     void ChangeLevel()
     {
-        bpmScript.musicBPM = 114;
-        //currentSong.Stop();
-
-        LeanTween.value(bpm, 0, 1, time).setOnUpdate((float val) =>
-        {
-            Color color = new Color(imageObject.color.r, imageObject.color.g, imageObject.color.b, val);
-            imageObject.color = color;
-
-        });
-
-        nextSong.SetActive(true);
         slamTiles[0].material.SetTexture("_EmissionMap", neon);
         slamTiles[1].material.SetTexture("_EmissionMap", neon);
         slamTiles[2].material.SetTexture("_EmissionMap", neon);

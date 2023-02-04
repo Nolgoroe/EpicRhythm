@@ -18,8 +18,6 @@ public class LevelManager : MonoBehaviour
         instance = this;
         fadeAnim.SetTrigger("Fade Into Level");
         StartCoroutine(OnStartLevelAction());
-
-        LeanTween.init(5000);
     }
 
     IEnumerator OnStartLevelAction()
