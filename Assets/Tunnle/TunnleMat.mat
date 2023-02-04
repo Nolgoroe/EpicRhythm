@@ -38,13 +38,13 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _MetalicStrength: 0.12
+    - _MetalicStrength: 0.138
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _SmoohingFloat: 0.5
+    - _SmoohingFloat: 0.285
     m_Colors:
-    - _FirstColor: {r: 0.49019608, g: 0, b: 0.7490196, a: 0}
-    - _SecondColor: {r: 0, g: 0.085745335, b: 0.26415092, a: 0}
+    - _FirstColor: {r: 1.2665007, g: 0, b: 0.9965322, a: 0}
+    - _SecondColor: {r: 17.187979, g: 75.78045, b: 5.5545855, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &2919302214211159833
 MonoBehaviour:
