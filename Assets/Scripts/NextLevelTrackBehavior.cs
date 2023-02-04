@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class NextLevelTrackBehavior : MonoBehaviour
 {
+    public static bool pianoLevel;
+
     public static bool stopSpawningTiles;
     public static bool stopSpawningObstacles;
 
     public MeshRenderer[] Tiles;
+    public MeshRenderer[] slamTiles;
     public GameObject boxVolume;
 
     [SerializeField] Texture neon;
@@ -15,6 +18,8 @@ public class NextLevelTrackBehavior : MonoBehaviour
 
     [SerializeField] int obstaclesWaitTime;
     private int obstaclesWaitIndicator;
+
+    private int slamTileWait;
     private void Update()
     {
         if (BPM.beatFull)
@@ -27,7 +32,7 @@ public class NextLevelTrackBehavior : MonoBehaviour
             }
             if (stopSpawningTiles)
             {
-                boxVolume.transform.Translate(0,0,-2);
+                BoxVolumeMove();
                 ChangeTiles();
             }
         }
@@ -35,6 +40,13 @@ public class NextLevelTrackBehavior : MonoBehaviour
 
     void ChangeTiles()
     {
+        if (slamTileWait == 9)
+        {
+            slamTiles[0].material.SetTexture("_EmissionMap", piano);
+            slamTiles[1].material.SetTexture("_EmissionMap", piano);
+            slamTiles[2].material.SetTexture("_EmissionMap", piano);
+        }
+        slamTileWait++;
         for (int i = 0; i < Tiles.Length; i++)
         {
             
@@ -56,4 +68,11 @@ public class NextLevelTrackBehavior : MonoBehaviour
             }
         }
     }
+    void BoxVolumeMove()
+    {
+        if (boxVolume.transform.position.z <= 0)
+            return;
+        else
+            boxVolume.transform.Translate(0, 0, -2);
+;    }
 }
