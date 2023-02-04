@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
 
     public ColorOnBeat colorOnBeat;
     public RipplePostProcessor rippleEffect;
+    public GameObject[] dashEffects;
     private bool isCrouched;
     private bool skipBeat;
 
@@ -92,6 +93,10 @@ public class PlayerController : MonoBehaviour
     }
     void OnBeatOccurrence()
     {
+        dashEffects[0].SetActive(false);
+        dashEffects[1].SetActive(false);
+        dashEffects[2].SetActive(false);
+        dashEffects[3].SetActive(false);
         //keyPressed = false;
         //inputFailed = false;
         bumped = false;
@@ -214,19 +219,21 @@ public class PlayerController : MonoBehaviour
     {
         if (currentAction == ActionType.None) return;
 
-
         switch (currentAction)
         {
             case ActionType.MoveLeft:
                 if (transform.position.x - 2 < limitXleft) return;
+                dashEffects[0].SetActive(true);
                 MoveLeft();
                 break;
             case ActionType.MoveRight:
                 if (transform.position.x + 2 > limitXRight) return;
+                dashEffects[1].SetActive(true);
                 MoveRight();
                 break;
             case ActionType.Jump:
                 if (transform.position.y + 2 > limitYUp) return;
+                dashEffects[2].SetActive(true);
                 Jump();
                 break;
             case ActionType.Crouch:
@@ -300,7 +307,7 @@ public class PlayerController : MonoBehaviour
     {
         BPM.BPMinstance.ResetBeatActionTimer();
         StandUp();
-
+        dashEffects[3].SetActive(true);
         if (transform.position.y > 0.3f)
         {
             tileGlow.Slam();

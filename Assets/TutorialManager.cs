@@ -23,16 +23,27 @@ public class TutorialManager : MonoBehaviour
 
     private void Update()
     {
-        if (!BPM.beatOn) return;
+        //if (!BPM.beatOn) return;
         Debug.Log(BPM.beatCountFull);
 
-        if(BPM.beatCountFull == 5 && !alreadyHappned)
+        if(BPM.beatCountFull == 7 && !alreadyHappned)
         {
             alreadyHappned = true;
             StartCoroutine(FadeInImage());
         }
 
-        if(BPM.beatCountFull != 5 && BPM.beatFull)
+        if(BPM.beatCountFull != 7 && BPM.beatFull)
+        {
+            alreadyHappned = false;
+        }
+
+        if (BPM.beatCountFull == 11 && !alreadyHappned)
+        {
+            alreadyHappned = true;
+            StartCoroutine(FadeInImage());
+        }
+
+        if (BPM.beatCountFull != 11 && BPM.beatFull)
         {
             alreadyHappned = false;
         }
@@ -49,7 +60,7 @@ public class TutorialManager : MonoBehaviour
         tutorialCanvas.gameObject.SetActive(true);
 
         nextElementButton.interactable = false;
-        float time = tutorialSO[tutorialIndex].narrativeElements[tutorialIndex].fadeInTime;
+        float time = tutorialSO[tutorialIndex].narrativeElements[0].fadeInTime;
 
 
         LeanTween.value(imageObject.gameObject, 0, 1, time).setOnUpdate((float val) =>
@@ -65,7 +76,7 @@ public class TutorialManager : MonoBehaviour
     }
     public IEnumerator FadeOutImage()
     {
-        float time = tutorialSO[tutorialIndex].narrativeElements[tutorialIndex].fadeOutTime;
+        float time = tutorialSO[tutorialIndex].narrativeElements[0].fadeOutTime;
 
         LeanTween.value(imageObject.gameObject, 1, 0, time).setOnUpdate((float val) =>
         {

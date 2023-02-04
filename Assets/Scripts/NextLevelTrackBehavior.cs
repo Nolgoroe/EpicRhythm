@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class NextLevelTrackBehavior : MonoBehaviour
 {
@@ -13,16 +14,22 @@ public class NextLevelTrackBehavior : MonoBehaviour
     public MeshRenderer[] slamTiles;
     public GameObject boxVolume;
 
+
     [SerializeField] Texture neon;
     [SerializeField] Texture piano;
 
-    [SerializeField] Material slamEffectMat;
+    [SerializeField] ParticleSystem[] slamEffectMat;
 
     [SerializeField] int obstaclesWaitTime;
     private int obstaclesWaitIndicator;
 
     private int startCountingToNextLevel;
     private int slamTileWait;
+    private bool volumeBoxMoved;
+    private void Start()
+    {
+
+    }
     private void Update()
     {
         if (!BPM.beatOn) return;
@@ -42,7 +49,7 @@ public class NextLevelTrackBehavior : MonoBehaviour
             }
             if (stopSpawningTiles)
             {
-                BoxVolumeMove();
+                if (!volumeBoxMoved) BoxVolumeMove();
                 ChangeTiles();
             }
         }
@@ -52,9 +59,7 @@ public class NextLevelTrackBehavior : MonoBehaviour
     {
         if (slamTileWait == 9)
         {
-            slamTiles[0].material.SetTexture("_EmissionMap", neon);
-            slamTiles[1].material.SetTexture("_EmissionMap", neon);
-            slamTiles[2].material.SetTexture("_EmissionMap", neon);
+            ChangeLevel();
         }
         slamTileWait++;
         for (int i = 0; i < Tiles.Length; i++)
@@ -82,9 +87,19 @@ public class NextLevelTrackBehavior : MonoBehaviour
     {
         if (boxVolume.transform.position.z <= 0)
         {
+            volumeBoxMoved = true;
             return;
         }
         else
             boxVolume.transform.Translate(0, 0, -2);
-;    }
+     }
+    void ChangeLevel()
+    {
+        slamTiles[0].material.SetTexture("_EmissionMap", neon);
+        slamTiles[1].material.SetTexture("_EmissionMap", neon);
+        slamTiles[2].material.SetTexture("_EmissionMap", neon);
+        slamEffectMat[0].GetComponent<ParticleSystemRenderer>().material.SetColor("_EmissionColor", Color.cyan);
+        slamEffectMat[1].GetComponent<ParticleSystemRenderer>().material.SetColor("_EmissionColor", Color.cyan);
+        slamEffectMat[2].GetComponent<ParticleSystemRenderer>().material.SetColor("_EmissionColor", Color.cyan);
+    }
 }
