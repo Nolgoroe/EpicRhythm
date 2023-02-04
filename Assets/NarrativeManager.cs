@@ -37,6 +37,8 @@ public class NarrativeManager : MonoBehaviour
     public IEnumerator FadeInImage()
     {
         nextElementButton.interactable = false;
+
+        imageObject.sprite = currentNarrativeSO.narrativeElements[currentIndex].entrySprite;
         float time = currentNarrativeSO.narrativeElements[currentIndex].fadeInTime;
 
 

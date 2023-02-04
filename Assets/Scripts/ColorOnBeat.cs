@@ -12,6 +12,9 @@ public class ColorOnBeat : MonoBehaviour
     private SkinnedMeshRenderer hairMeshRenderer;
     private SkinnedMeshRenderer hornLeftMeshRenderer;
     private SkinnedMeshRenderer hornRightMeshRenderer;
+
+    public Transform normalBodyTarget;
+    private MeshRenderer normalMeshRenderer;
     //public Material material;
     //private Material materialInstance;
     public Color materialColor;
@@ -33,14 +36,21 @@ public class ColorOnBeat : MonoBehaviour
     public bool isEveryBeat;
 
     Material bodyMat;
+    Material normalBodyMat;
     Material HairMat;
     Material hornLeftMat;
     Material hornRighttMat;
+
     void Start()
     {
         if (bodyTarget != null)
         {
             bodyMeshRenderer = bodyTarget.GetComponent<SkinnedMeshRenderer>();
+        }
+
+        if (normalBodyTarget != null)
+        {
+            normalMeshRenderer = normalBodyTarget.GetComponent<MeshRenderer>();
         }
 
         if (hairTarget != null)
@@ -59,17 +69,36 @@ public class ColorOnBeat : MonoBehaviour
         }
 
         colorStrength = 0;
-        bodyMat = bodyMeshRenderer.materials[0];
-        bodyMat.EnableKeyword("_Emmision");
 
-        HairMat = hairMeshRenderer.materials[0];
-        HairMat.EnableKeyword("_Emmision");
+        if(bodyMeshRenderer)
+        {
+            bodyMat = bodyMeshRenderer.materials[0];
+            bodyMat.EnableKeyword("_Emmision");
+        }
 
-        hornLeftMat = hornLeftMeshRenderer.materials[0];
-        hornLeftMat.EnableKeyword("_Emmision");
+        if(hairMeshRenderer)
+        {
+            HairMat = hairMeshRenderer.materials[0];
+            HairMat.EnableKeyword("_Emmision");
+        }
 
-        hornRighttMat = hornRightMeshRenderer.materials[0];
-        hornRighttMat.EnableKeyword("_Emmision");
+        if(hornLeftMeshRenderer)
+        {
+            hornLeftMat = hornLeftMeshRenderer.materials[0];
+            hornLeftMat.EnableKeyword("_Emmision");
+        }
+
+        if(hornRightMeshRenderer)
+        {
+            hornRighttMat = hornRightMeshRenderer.materials[0];
+            hornRighttMat.EnableKeyword("_Emmision");
+        }
+
+        if(normalMeshRenderer)
+        {
+            normalBodyMat = normalMeshRenderer.materials[0];
+            normalBodyMat.EnableKeyword("_Emmision");
+        }
         //materialInstance = new Material(material);
         //materialInstance.EnableKeyword("_Emmision");
         //meshRenderer.material = materialInstance;
@@ -91,10 +120,31 @@ public class ColorOnBeat : MonoBehaviour
         CheckBeat();
 
         //materialInstance.SetColor(colorProperties, materialColor * colorStrength * colorMultiplier);
-        bodyMat.SetColor(colorProperties, materialColor * colorStrength);
-        HairMat.SetColor(colorProperties, materialColor * colorStrength);
-        hornLeftMat.SetColor(colorProperties, materialColor * colorStrength);
-        hornRighttMat.SetColor(colorProperties, materialColor * colorStrength);
+
+        if(bodyMat)
+        {
+            bodyMat.SetColor(colorProperties, materialColor * colorStrength);
+        }
+
+        if(HairMat)
+        {
+            HairMat.SetColor(colorProperties, materialColor * colorStrength);
+        }
+
+        if(hornLeftMat)
+        {
+            hornLeftMat.SetColor(colorProperties, materialColor * colorStrength);
+        }
+
+        if(hornRighttMat)
+        {
+            hornRighttMat.SetColor(colorProperties, materialColor * colorStrength);
+        }
+
+        if (normalBodyMat)
+        {
+            normalBodyMat.SetColor(colorProperties, materialColor * colorStrength);
+        }
 
         if (Input.GetKeyDown(KeyCode.X))
         {
