@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
 
     public Animator fadeAnim;
     public float fadeDelayTime;
+
+    public GameObject mainMenuPanel, creditsPanel;
     void Start()
     {
         if (instance != null && instance != this)
@@ -31,5 +33,22 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(fadeDelayTime);
         SceneManagerObject.instance.LoadSpecificScene(1);
+    }
+
+    public void QuitGame()
+    {
+        Debug.Log("Exit game");
+        Application.Quit();
+    }
+
+    public void GoToCredits()
+    {
+        mainMenuPanel.SetActive(false);
+        creditsPanel.SetActive(true);
+    }
+    public void GoBackToMainMenu()
+    {
+        creditsPanel.SetActive(false);
+        mainMenuPanel.SetActive(true);
     }
 }
