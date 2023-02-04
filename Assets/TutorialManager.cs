@@ -23,6 +23,10 @@ public class TutorialManager : MonoBehaviour
 
     public bool doTutorial;
 
+    public int firstTutorialBeat;
+    public int secondtTutorialBeat;
+    public int thirdTutorialBeat;
+
     private void Awake()
     {
         instance = this;

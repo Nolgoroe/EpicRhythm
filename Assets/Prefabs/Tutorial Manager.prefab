@@ -46,7 +46,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tutorialSO:
   - {fileID: 11400000, guid: ae445a67efeac4e4f8539dae827ba020, type: 2}
+  - {fileID: 11400000, guid: 8cecd64065b813b41a18483cf525263d, type: 2}
+  - {fileID: 11400000, guid: 7a230bee00f8a6f4baf3c7da87485d89, type: 2}
   nextElementButton: {fileID: 0}
   imageObject: {fileID: 0}
   tutorialCanvas: {fileID: 0}
   tutorialIndex: 0
+  doTutorial: 0
