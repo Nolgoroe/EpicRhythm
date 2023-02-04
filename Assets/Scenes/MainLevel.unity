@@ -655,6 +655,7 @@ MonoBehaviour:
   fadeAnim: {fileID: 1436187096}
   afterStartDelayTime: 1.5
   afterDieDelayTime: 1.5
+  doNarrative: 0
 --- !u!4 &181673247
 Transform:
   m_ObjectHideFlags: 0
@@ -3635,7 +3636,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1585843414
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -20,6 +20,9 @@ public class TutorialManager : MonoBehaviour
     public Canvas tutorialCanvas;
 
     public int tutorialIndex;
+
+    public bool doTutorial;
+
     private void Awake()
     {
         instance = this;
@@ -28,6 +31,8 @@ public class TutorialManager : MonoBehaviour
     private void Update()
     {
         if (!BPM.beatOn) return;
+
+        if (!doTutorial) return;
         Debug.Log(BPM.beatCountFull);
 
         if(BPM.beatCountFull == 7 && !alreadyHappned1)

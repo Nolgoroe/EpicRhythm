@@ -13,10 +13,10 @@ public class ColorOnBeat : MonoBehaviour
     private SkinnedMeshRenderer hornLeftMeshRenderer;
     private SkinnedMeshRenderer hornRightMeshRenderer;
 
-    public Transform normalBodyTarget;
-    private MeshRenderer normalMeshRenderer;
-    //public Material material;
-    //private Material materialInstance;
+    public Material flowerMat;
+    private Material materialInstance;
+    public MeshRenderer flowerBody;
+
     public Color materialColor;
     public string colorProperties;
 
@@ -35,8 +35,8 @@ public class ColorOnBeat : MonoBehaviour
     public int[] onBeatD8;
     public bool isEveryBeat;
 
+
     Material bodyMat;
-    Material normalBodyMat;
     Material HairMat;
     Material hornLeftMat;
     Material hornRighttMat;
@@ -46,11 +46,6 @@ public class ColorOnBeat : MonoBehaviour
         if (bodyTarget != null)
         {
             bodyMeshRenderer = bodyTarget.GetComponent<SkinnedMeshRenderer>();
-        }
-
-        if (normalBodyTarget != null)
-        {
-            normalMeshRenderer = normalBodyTarget.GetComponent<MeshRenderer>();
         }
 
         if (hairTarget != null)
@@ -94,14 +89,12 @@ public class ColorOnBeat : MonoBehaviour
             hornRighttMat.EnableKeyword("_Emmision");
         }
 
-        if(normalMeshRenderer)
+        if(flowerBody)
         {
-            normalBodyMat = normalMeshRenderer.materials[0];
-            normalBodyMat.EnableKeyword("_Emmision");
+            materialInstance = new Material(flowerMat);
+            materialInstance.EnableKeyword("_EMISSION");
+            flowerBody.material = materialInstance;
         }
-        //materialInstance = new Material(material);
-        //materialInstance.EnableKeyword("_Emmision");
-        //meshRenderer.material = materialInstance;
     }
 
     void Update()
@@ -119,9 +112,12 @@ public class ColorOnBeat : MonoBehaviour
 
         CheckBeat();
 
-        //materialInstance.SetColor(colorProperties, materialColor * colorStrength * colorMultiplier);
+        if(materialInstance)
+        {
+            materialInstance.SetColor(colorProperties, materialColor * colorStrength * colorMultiplier);
+        }
 
-        if(bodyMat)
+        if (bodyMat)
         {
             bodyMat.SetColor(colorProperties, materialColor * colorStrength);
         }
@@ -139,11 +135,6 @@ public class ColorOnBeat : MonoBehaviour
         if(hornRighttMat)
         {
             hornRighttMat.SetColor(colorProperties, materialColor * colorStrength);
-        }
-
-        if (normalBodyMat)
-        {
-            normalBodyMat.SetColor(colorProperties, materialColor * colorStrength);
         }
 
         if (Input.GetKeyDown(KeyCode.X))

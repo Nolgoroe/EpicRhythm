@@ -83,6 +83,9 @@ MonoBehaviour:
   growSize: 2
   shrinkSize: 1
   shrinkFactor: 0.99
+  OnFullBeat: 0
+  onBeatD8: 
+  isEveryBeat: 0
 --- !u!114 &6759109746620646837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95,12 +98,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed430de08c1e91a44938ba12dded64e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 553562741620583906}
-  material: {fileID: 2100000, guid: 9a62c23fc64dc99468426cfd1040df22, type: 2}
+  bodyTarget: {fileID: 0}
+  hairTarget: {fileID: 0}
+  leftHornTarget: {fileID: 0}
+  rightHornTarget: {fileID: 0}
+  flowerMat: {fileID: 2100000, guid: 9a62c23fc64dc99468426cfd1040df22, type: 2}
+  flowerBody: {fileID: 4064367074326675724}
   materialColor: {r: 0, g: 0.46242142, b: 1, a: 0}
   colorProperties: _EmissionColor
   fallBackFactor: 0.959
   colorMultiplier: 2
+  OnFullBeat: 0
+  onBeatD8: 
+  isEveryBeat: 0
 --- !u!1 &3224979665228269859
 GameObject:
   m_ObjectHideFlags: 0

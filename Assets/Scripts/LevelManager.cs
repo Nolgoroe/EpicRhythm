@@ -11,6 +11,8 @@ public class LevelManager : MonoBehaviour
     public float afterStartDelayTime;
     public float afterDieDelayTime;
 
+    public bool doNarrative;
+
     private void Start()
     {
         instance = this;
@@ -23,9 +25,15 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSeconds(afterStartDelayTime);
         //start dialogue sequence;
         // on end of dialogue sequence we start the game after X seconds
-
-        NarrativeManager.instance.StartNarrativeSequence();
-        //StartCoroutine(OnEndNarrative());
+        
+        if(doNarrative)
+        {
+            NarrativeManager.instance.StartNarrativeSequence();
+        }
+        else
+        {
+            StartCoroutine(OnEndNarrative());
+        }
     }
 
     public IEnumerator OnEndNarrative()
