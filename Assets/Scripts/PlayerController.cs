@@ -187,7 +187,11 @@ public class PlayerController : MonoBehaviour
     }
     bool IsDead()
     {
-        if (currentHp == 0) return true;
+        if (currentHp == 0)
+        {
+            NextLevelTrackBehavior.startCountingToNextLevel = 0;
+            return true;
+        }
         else return false;
     }
 

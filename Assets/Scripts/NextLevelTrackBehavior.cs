@@ -36,7 +36,7 @@ public class NextLevelTrackBehavior : MonoBehaviour
     [SerializeField] int obstaclesWaitTime;
     private int obstaclesWaitIndicator;
 
-    private int startCountingToNextLevel;
+    public static int startCountingToNextLevel;
     private int slamTileWait;
     private bool volumeBoxMoved;
     private bool portalBoxMoved;
