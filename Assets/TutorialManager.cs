@@ -62,6 +62,7 @@ public class TutorialManager : MonoBehaviour
     {
         StopBPM();
         tutorialCanvas.gameObject.SetActive(true);
+        imageObject.sprite = tutorialSO[tutorialIndex].narrativeElements[0].entrySprite;
 
         nextElementButton.interactable = false;
         float time = tutorialSO[tutorialIndex].narrativeElements[0].fadeInTime;
