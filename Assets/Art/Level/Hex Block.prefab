@@ -104,7 +104,7 @@ MonoBehaviour:
   rightHornTarget: {fileID: 0}
   flowerMat: {fileID: 2100000, guid: 9a62c23fc64dc99468426cfd1040df22, type: 2}
   flowerBody: {fileID: 4064367074326675724}
-  materialColor: {r: 0, g: 0.46242142, b: 1, a: 0}
+  materialColor: {r: 0.85882354, g: 0.7034019, b: 0.05882351, a: 0}
   colorProperties: _EmissionColor
   fallBackFactor: 0.959
   colorMultiplier: 2
