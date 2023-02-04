@@ -14,8 +14,6 @@ public class TutorialManager : MonoBehaviour
     bool alreadyHappned1;
     bool alreadyHappned2;
     bool alreadyHappned3;
-    bool alreadyHappned4;
-    bool alreadyHappned5;
 
     public Canvas tutorialCanvas;
 
@@ -39,26 +37,37 @@ public class TutorialManager : MonoBehaviour
         if (!doTutorial) return;
         Debug.Log(BPM.beatCountFull);
 
-        if(BPM.beatCountFull == 7 && !alreadyHappned1)
+        if(BPM.beatCountFull == firstTutorialBeat && !alreadyHappned1)
         {
             alreadyHappned1 = true;
             StartCoroutine(FadeInImage());
         }
 
-        if(BPM.beatCountFull != 7 && BPM.beatFull)
+        if(BPM.beatCountFull != firstTutorialBeat && BPM.beatFull)
         {
             alreadyHappned1 = false;
         }
 
-        if (BPM.beatCountFull == 11 && !alreadyHappned2)
+        if (BPM.beatCountFull == secondtTutorialBeat && !alreadyHappned2)
         {
             alreadyHappned2 = true;
             StartCoroutine(FadeInImage());
         }
 
-        if (BPM.beatCountFull != 11 && BPM.beatFull)
+        if (BPM.beatCountFull != secondtTutorialBeat && BPM.beatFull)
         {
             alreadyHappned2 = false;
+        }
+
+        if (BPM.beatCountFull == thirdTutorialBeat && !alreadyHappned3)
+        {
+            alreadyHappned3 = true;
+            StartCoroutine(FadeInImage());
+        }
+
+        if (BPM.beatCountFull != thirdTutorialBeat && BPM.beatFull)
+        {
+            alreadyHappned3 = false;
         }
     }
     public void StopBPM()

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
-
+using UnityEngine.VFX;
 public class NextLevelTrackBehavior : MonoBehaviour
 {
 
@@ -14,6 +14,8 @@ public class NextLevelTrackBehavior : MonoBehaviour
     public MeshRenderer[] Tiles;
     public MeshRenderer[] slamTiles;
     public GameObject boxVolume;
+    public GameObject portalHolder;
+    public GameObject portal;
 
     public MeshRenderer[] obstacles1;
     public MeshRenderer[] obstacles2;
@@ -37,6 +39,8 @@ public class NextLevelTrackBehavior : MonoBehaviour
     private int startCountingToNextLevel;
     private int slamTileWait;
     private bool volumeBoxMoved;
+    private bool portalBoxMoved;
+    private bool portalDisabled;
     private void Start()
     {
         bpmScript = bpm.GetComponent<BPM>();
@@ -61,7 +65,14 @@ public class NextLevelTrackBehavior : MonoBehaviour
             }
             if (stopSpawningTiles)
             {
+                if (!portalDisabled)
+                {
+                    portal.SetActive(true);
+                    portalDisabled = true;
+                }
+
                 if (!volumeBoxMoved) BoxVolumeMove();
+                if (!portalBoxMoved) PortalMove();
                 ChangeTiles();
                 ChangeObstacles(obstacles1);
                 ChangeObstacles(obstacles2);
@@ -115,6 +126,22 @@ public class NextLevelTrackBehavior : MonoBehaviour
         else
             boxVolume.transform.Translate(0, 0, -2);
      }
+    void PortalMove()
+    {
+        if (portalHolder.transform.position.z == 24)
+        {
+            portal.GetComponent<VisualEffect>().Play();
+            portalHolder.transform.Translate(0, 0, -2);
+        }
+        if (portalHolder.transform.position.z <= 0)
+        {
+            portal.SetActive(false);
+            portalBoxMoved = true;
+            return;
+        }
+        else
+            portalHolder.transform.Translate(0, 0, -2);
+    }
     void ChangeLevel()
     {
         stopSpawningObstacles = false;
