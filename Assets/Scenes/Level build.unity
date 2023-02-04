@@ -9780,11 +9780,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5213004666727520006, guid: 1bf34d3a82db2914898d339755a9270f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5213004666727520007, guid: 1bf34d3a82db2914898d339755a9270f, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bf34d3a82db2914898d339755a9270f, type: 3}
@@ -12930,6 +12930,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1102728817 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9056689379846022383, guid: 23c392daecd3fda4ca9432d084b7dbc3, type: 3}
+  m_PrefabInstance: {fileID: 1962020236}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 712e66ffa21bde44ba8d3aa445fbee7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1114466257
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26291,7 +26302,7 @@ PrefabInstance:
     - target: {fileID: 4353588261129989798, guid: beea12dd78e496542a84ed085c0ebfc3, type: 3}
       propertyPath: rippleEffect
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1102728817}
     - target: {fileID: 4353588261129989798, guid: beea12dd78e496542a84ed085c0ebfc3, type: 3}
       propertyPath: hearts.Array.data[0]
       value: 
