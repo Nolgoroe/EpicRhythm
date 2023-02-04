@@ -5,6 +5,7 @@ using UnityEngine.Rendering;
 
 public class NextLevelTrackBehavior : MonoBehaviour
 {
+
     public static bool pianoLevel;
 
     public static bool stopSpawningTiles;
@@ -14,10 +15,16 @@ public class NextLevelTrackBehavior : MonoBehaviour
     public MeshRenderer[] slamTiles;
     public GameObject boxVolume;
 
+    public MeshRenderer[] obstacles1;
+    public MeshRenderer[] obstacles2;
+
+
     public GameObject bpm;
-    public GameObject nextSong;
+    public GameObject nextSongGameObject;
     private AudioSource currentSong;
     private BPM bpmScript;
+    private AudioSource nextSong;
+    [SerializeField] float fadeMusicTime;
 
     [SerializeField] Texture neon;
     [SerializeField] Texture piano;
@@ -56,6 +63,8 @@ public class NextLevelTrackBehavior : MonoBehaviour
             {
                 if (!volumeBoxMoved) BoxVolumeMove();
                 ChangeTiles();
+                ChangeObstacles(obstacles1);
+                ChangeObstacles(obstacles2);
             }
         }
     }
@@ -88,6 +97,14 @@ public class NextLevelTrackBehavior : MonoBehaviour
             }
         }
     }
+    void ChangeObstacles(MeshRenderer[] obstacles)
+    {
+        for (int i = 0; i < obstacles.Length; i++)
+        {
+            obstacles[i].material.SetTexture("_EmissionMap", neon);
+            obstacles[i].material.SetColor("_EmissionColor", Color.red);
+        }
+    }
     void BoxVolumeMove()
     {
         if (boxVolume.transform.position.z <= 0)
@@ -100,14 +117,30 @@ public class NextLevelTrackBehavior : MonoBehaviour
      }
     void ChangeLevel()
     {
-        bpmScript.musicBPM = 114;
-        currentSong.Stop();
-        nextSong.SetActive(true);
+        stopSpawningObstacles = false;
+        bpmScript.musicBPM = 120;
+        fadeIn();
+        fadeOut();
         slamTiles[0].material.SetTexture("_EmissionMap", neon);
         slamTiles[1].material.SetTexture("_EmissionMap", neon);
         slamTiles[2].material.SetTexture("_EmissionMap", neon);
         slamEffectMat[0].GetComponent<ParticleSystemRenderer>().material.SetColor("_EmissionColor", Color.cyan);
         slamEffectMat[1].GetComponent<ParticleSystemRenderer>().material.SetColor("_EmissionColor", Color.cyan);
         slamEffectMat[2].GetComponent<ParticleSystemRenderer>().material.SetColor("_EmissionColor", Color.cyan);
+    }
+    void fadeOut()
+    {
+        LeanTween.value(bpm, 1, 0, fadeMusicTime).setOnUpdate((float val) =>
+        {
+            currentSong.volume = val;
+        });
+    }
+    void fadeIn()
+    {
+        nextSongGameObject.SetActive(true);
+        LeanTween.value(bpm, 0, 1, fadeMusicTime).setOnUpdate((float val) =>
+        {
+            currentSong.volume = val;
+        });
     }
 }

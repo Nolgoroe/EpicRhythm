@@ -25,7 +25,7 @@ public class ObstacleTrackManager : MonoBehaviour
     }
     bool[] ReturnNextLine()
     {
-        if (lineIndicator == level.levelPreset.Length) lineIndicator = 0;
+        if (lineIndicator == level.levelPreset.Length) lineIndicator = 40;
         bool[] line = level.levelPreset[0].line;
         for (int i = 0; i < level.levelPreset.Length; i++)
         {
@@ -49,12 +49,7 @@ public class ObstacleTrackManager : MonoBehaviour
     void LineControl()
     {
         bool[] line;
-        if (NextLevelTrackBehavior.stopSpawningObstacles)
-        {
-            line = ReturnEmptyLine();
-            emptyLine = false;
-        }
-        else if (!emptyLine)
+        if (!emptyLine)
         {
             line = ReturnNextLine();
             emptyLine = true;
