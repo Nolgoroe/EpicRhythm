@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: 4fa27bcb9f8d3a049bc0824e3c978329
   - enabled: 1
-    path: Assets/Scenes/MovementTest.unity
-    guid: 861b6cf3907a3ac41b81d742d4454f94
+    path: Assets/Scenes/MainLevel.unity
+    guid: 84fe1bf4270022f49bc2faa7f5022af7
   m_configObjects: {}

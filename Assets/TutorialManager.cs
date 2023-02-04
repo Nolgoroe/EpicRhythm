@@ -11,7 +11,11 @@ public class TutorialManager : MonoBehaviour
     public Button nextElementButton;
     public Image imageObject;
 
-    bool alreadyHappned;
+    bool alreadyHappned1;
+    bool alreadyHappned2;
+    bool alreadyHappned3;
+    bool alreadyHappned4;
+    bool alreadyHappned5;
 
     public Canvas tutorialCanvas;
 
@@ -23,29 +27,29 @@ public class TutorialManager : MonoBehaviour
 
     private void Update()
     {
-        //if (!BPM.beatOn) return;
+        if (!BPM.beatOn) return;
         Debug.Log(BPM.beatCountFull);
 
-        if(BPM.beatCountFull == 7 && !alreadyHappned)
+        if(BPM.beatCountFull == 7 && !alreadyHappned1)
         {
-            alreadyHappned = true;
+            alreadyHappned1 = true;
             StartCoroutine(FadeInImage());
         }
 
         if(BPM.beatCountFull != 7 && BPM.beatFull)
         {
-            alreadyHappned = false;
+            alreadyHappned1 = false;
         }
 
-        if (BPM.beatCountFull == 11 && !alreadyHappned)
+        if (BPM.beatCountFull == 11 && !alreadyHappned2)
         {
-            alreadyHappned = true;
+            alreadyHappned2 = true;
             StartCoroutine(FadeInImage());
         }
 
         if (BPM.beatCountFull != 11 && BPM.beatFull)
         {
-            alreadyHappned = false;
+            alreadyHappned2 = false;
         }
     }
     public void StopBPM()

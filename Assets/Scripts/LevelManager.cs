@@ -24,8 +24,8 @@ public class LevelManager : MonoBehaviour
         //start dialogue sequence;
         // on end of dialogue sequence we start the game after X seconds
 
-        //NarrativeManager.instance.StartNarrativeSequence();
-        StartCoroutine(OnEndNarrative());
+        NarrativeManager.instance.StartNarrativeSequence();
+        //StartCoroutine(OnEndNarrative());
     }
 
     public IEnumerator OnEndNarrative()
