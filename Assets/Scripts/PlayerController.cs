@@ -206,10 +206,6 @@ public class PlayerController : MonoBehaviour
         {
             currentAction = ActionType.Crouch;
         }
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            NextLevelTrackBehavior.stopSpawningObstacles = true;
-        }
     }
 
     void HandleMovement()

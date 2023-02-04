@@ -16,14 +16,22 @@ public class NextLevelTrackBehavior : MonoBehaviour
     [SerializeField] Texture neon;
     [SerializeField] Texture piano;
 
+    [SerializeField] Material slamEffectMat;
+
     [SerializeField] int obstaclesWaitTime;
     private int obstaclesWaitIndicator;
 
+    private int startCountingToNextLevel;
     private int slamTileWait;
     private void Update()
     {
         if (BPM.beatFull)
         {
+            startCountingToNextLevel++;
+            if (startCountingToNextLevel == 60)
+            {
+                stopSpawningObstacles = true;
+            }
             if (stopSpawningObstacles)
             {
                 obstaclesWaitIndicator++;
